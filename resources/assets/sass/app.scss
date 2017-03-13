@@ -1,0 +1,16 @@
+
+// Fonts
+@import url(https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic);
+@import url(https://fonts.googleapis.com/icon?family=Material+Icons);
+
+// Variables
+@import "variables";
+@import "common";
+
+// Vue Material
+@import "node_modules/vue-material/dist/vue-material";
+
+// App modules
+@import "modules/course-selection";
+@import "modules/rating";
+@import "modules/thankyou";
