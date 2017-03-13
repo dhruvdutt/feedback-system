@@ -1,0 +1,26 @@
+body {
+  background-color: $body-bg !important;
+}
+
+::-moz-selection {
+  color: #FFFFFF !important;
+  background: #2A3A3F !important;
+}
+
+::selection {
+  color: #FFFFFF !important;
+  background: #2A3A3F !important;
+}
+
+// Text classes
+.text-center {
+  text-align: center !important;
+}
+
+.container {
+  padding: 20px;
+}
+
+.full-width-button {
+  width: 100% !important;
+}
