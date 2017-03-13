@@ -5,4 +5,4 @@
 - `npm i -g && npm i`
 - Create `.env` inside root folder. Copy all contents from `.env.example`
 - `php artisan key:generate`
-- Run both these parallely in seperate instances => `php artisan` and `npm run watch`
+- Run both these parallely in seperate instances => `php artisan serve` and `npm run watch`
