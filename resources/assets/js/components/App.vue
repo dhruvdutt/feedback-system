@@ -27,7 +27,12 @@ export default {
     };
   },
   methods: {
-    proceed: () => {
+    proceed() {
+
+      if (!this.token) {
+        this.error = "Please enter a valid token.";
+        return;
+      }
 
       this.loading = true;
 
