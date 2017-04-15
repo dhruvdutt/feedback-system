@@ -8,6 +8,12 @@ class HomeController extends Controller
 {
     public function checkToken(Request $request)
     {
-      return "ok";
+      $token = '123456';
+
+      if ($token === $request->token) {
+        return redirect('course-selection');
+      } else {
+        return redirect('/')->with('message', 'The token is incorrect');
+      }
     }
 }

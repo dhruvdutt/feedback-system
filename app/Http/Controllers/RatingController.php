@@ -13,6 +13,6 @@ class RatingController extends Controller
 
     public function create()
     {
-      return redirect('/thankyou');
+      return view('thankyou');
     }
 }

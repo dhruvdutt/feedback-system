@@ -3,6 +3,7 @@
   <div class="container rating-container text-center">
     <span class="md-display-1">On a scale of 0-4, how do you rate your experience of giving the feedback?</span>
     <form action="/rating" method="post">
+      {{ csrf_field() }}
       <md-layout md-align="center">
         <md-radio v-model="radio1" id="my-test1" name="my-test-group1" md-value="1">0 - Didn't like it at all</md-radio>
         <md-radio v-model="radio1" id="my-test1" name="my-test-group1" md-value="1">1 - Not the best</md-radio>
