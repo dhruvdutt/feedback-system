@@ -15,9 +15,9 @@ class StudentFeedbackMaster extends Migration
     {
       Schema::create('student_feedback_master', function(Blueprint $table) {
         $table->increments('program_course_term_serial_question_id');
-        $table->integer('program_course_term_serial_id');
-        $table->integer('question_id');
-        $table->integer('answer_type_id');
+        $table->unsignedInteger('program_course_term_serial_id');
+        $table->unsignedInteger('question_id');
+        $table->unsignedInteger('answer_type_id');
         $table->string('answer');
 
         $table->foreign('program_course_term_serial_id')->references('program_course_term_serial_id')->on('feedback');

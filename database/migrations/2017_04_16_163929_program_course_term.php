@@ -18,13 +18,12 @@ class ProgramCourseTerm extends Migration
         $table->string('program_id');
         $table->string('course_id');
         $table->unsignedInteger('term_id');
-      });
 
-      Schema::table('program_course_term', function($table) {
         $table->foreign('program_id')->references('program_id')->on('program_master');
         $table->foreign('course_id')->references('course_id')->on('course_master');
         $table->foreign('term_id')->references('term_id')->on('term_year_master');
       });
+      
     }
 
     /**

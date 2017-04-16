@@ -19,7 +19,7 @@ class QuestionMaster extends Migration
         $table->unsignedInteger('term_id');
         $table->string('question');
         $table->string('question_type');
-        $table->integer('answer_type_id');
+        $table->unsignedInteger('answer_type_id');
 
         $table->foreign('course_id')->references('course_id')->on('course_master');
         $table->foreign('term_id')->references('term_id')->on('term_year_master');

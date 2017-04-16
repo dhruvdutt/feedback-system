@@ -17,7 +17,7 @@ class UserMaster extends Migration
         $table->string('username');
         $table->string('name');
         $table->string('type');
-        $table->string('name');
+        $table->string('password');
         $table->string('email');
 
         $table->primary('username');
