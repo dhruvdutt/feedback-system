@@ -22,6 +22,10 @@ class CourseController extends Controller
     ]);
   }
 
+  public function gerCourses(){
+    
+  }
+
   public function post(Request $request)
   {
     return redirect('/feedback');
