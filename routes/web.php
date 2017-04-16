@@ -14,13 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::post('/', ['uses' => 'HomeController@checkToken']);
 
 Route::get('/course-selection', ['uses' => 'CourseController@index']);
+
 Route::get('/feedback', ['uses' => 'FeedbackController@index']);
+Route::post('/feedback', ['uses' => 'FeedbackController@create']);
 
 // Rating
 Route::get('/rating', ['uses' => 'RatingController@index']);
 Route::post('/rating', ['uses' => 'RatingController@create']);
-
-// Feedback submitted
-Route::get('/thankyou', ['uses' => 'FeedbackController@thankyou']);
