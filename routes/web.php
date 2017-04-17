@@ -27,3 +27,13 @@ Route::post('/rating', ['uses' => 'RatingController@create']);
 
 
 Route::resource('term','TermController');
+
+// Admin routes
+Route::group(['prefix' => 'admin'], function () {
+
+  Route::group(['prefix' => 'settings'], function () {
+    Route::get('terms', ['uses' => 'AdminController@terms']);
+  });
+
+  Route::get('dashboard', ['uses' => 'AdminController@dashboard']);
+});
