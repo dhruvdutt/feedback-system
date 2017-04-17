@@ -1,0 +1,43 @@
+CREATED_BY UPDATED_BY
+CREATED_ON UPDATED_ON
+
+ADMIN /admin
+    /settings
+        Terms 
+        Programs
+        Course
+        ProgramCourseTerm
+        AnswerTypes
+        
+        FixedQuestions (Add Question, Type) FixedQuestionsOptions ()
+        CustomQuestions
+
+    /dashboard
+        -> Show Old Feedback Term and Dates
+        -> Start Feedback, Select Term, Start/End Date
+        -> Configure custom questions => Redirect to /settings (CustomQuestions)
+        
+
+SUPERADMIN /superadmin
+    /settings
+        Users
+        
+    /dashboard
+        Show Reports
+
+STUDENT 
+    /hash
+        List Core Courses (locked)
+        List Electives (selection)
+
+        Select FixedQuestions &
+        Custom Questions with specific CourseID and TermID
+        Append both and return for each course.
+
+        
+
+        
+        
+
+
+    
