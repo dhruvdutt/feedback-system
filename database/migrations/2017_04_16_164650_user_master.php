@@ -13,14 +13,15 @@ class UserMaster extends Migration
      */
     public function up()
     {
-        Schema::create('user_master',function(Blueprint $table){
-          $table->string('username')->index();
-          $table->string('name');
-          $table->string('type');
-          $table->string('password');
-          $table->string('email')
-          $table->primary('username');
-        });
+      Schema::create('user_master', function(Blueprint $table) {
+        $table->string('username');
+        $table->string('name');
+        $table->string('type');
+        $table->string('password');
+        $table->string('email');
+
+        $table->primary('username');
+      });
     }
 
     /**

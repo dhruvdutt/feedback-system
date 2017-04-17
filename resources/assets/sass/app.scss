@@ -8,9 +8,10 @@
 @import "common";
 
 // Vue Material
-@import "node_modules/vue-material/dist/vue-material";
+@import "../../../node_modules/angular-material/angular-material.min.css";
 
 // App modules
+@import "modules/welcome";
 @import "modules/course-selection";
 @import "modules/rating";
-@import "modules/thankyou";
+@import "modules/feedback";
