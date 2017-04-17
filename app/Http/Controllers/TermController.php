@@ -15,8 +15,9 @@ class TermController extends Controller
     public function index()
     {
         $terms = TermYearMaster::all();
+        // return response()->json($terms);
 
-        return response()->json($terms);
+        return view('admin.terms', ['terms' => $terms]);
     }
 
     /**
@@ -83,7 +84,7 @@ class TermController extends Controller
     public function destroy(TermYearMaster $termYearMaster)
     {
         //
-        var_dump($termYearMaster);
-        return response()->json($termYearMaster);
+        // $term = TermYearMaster::find()
+        // return response()->json($termYearMaster);
     }
 }

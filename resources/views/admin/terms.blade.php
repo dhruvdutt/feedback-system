@@ -1,5 +1,6 @@
 @extends('admin.base')
 @section('admin-content')
+
 <div ng-controller="TermController as vm">
   <md-card>
     <md-card-content>
@@ -12,18 +13,13 @@
             </tr>
           </thead>
           <tbody md-body>
-            <tr md-row>
-              <td md-cell>1</td>
-              <td md-cell>Autum</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>2</td>
-              <td md-cell>Winter</td>
-            </tr>
-            <tr md-row>
-              <td md-cell>3</td>
-              <td md-cell>Summer</td>
-            </tr>
+            @foreach ($terms as $term)
+              <tr md-row>
+                <td md-cell>{{ $term->term_id }}</td>
+                <td md-cell>{{ $term->term_name }}</td>
+                <td md-cell>{{ $term->year_name }}</td>
+              </tr>
+            @endforeach
           </tbody>
         </table>
       </md-table-container>
