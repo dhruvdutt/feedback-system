@@ -11,21 +11,21 @@ class ProgramSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('programme_master')->insert([
-          'programme_id' => '12',
-          'programme_name' => 'Msc.IT',
+      DB::table('program_master')->insert([
+          'program_id' => '12',
+          'program_name' => 'Msc.IT',
       ]);
-      DB::table('programme_master')->insert([
-          'programme_id' => '14',
-          'programme_name' => 'B.Tech',
+      DB::table('program_master')->insert([
+          'program_id' => '14',
+          'program_name' => 'B.Tech',
       ]);
-      DB::table('programme_master')->insert([
-          'programme_id' => '16',
-          'programme_name' => 'M.Tech',
+      DB::table('program_master')->insert([
+          'program_id' => '16',
+          'program_name' => 'M.Tech',
       ]);
-      DB::table('programme_master')->insert([
-          'programme_id' => '8',
-          'programme_name' => 'Msc.IT(ARD)',
+      DB::table('program_master')->insert([
+          'program_id' => '8',
+          'program_name' => 'Msc.IT(ARD)',
       ]);
     }
 }

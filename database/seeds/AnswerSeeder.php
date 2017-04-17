@@ -17,10 +17,6 @@ class AnswerSeeder extends Seeder
       ]);
       DB::table('answer_master')->insert([
           'answer_type_id' => '2',
-          'answer_type' => 'Radio',
-      ]);
-      DB::table('answer_master')->insert([
-          'answer_type_id' => '3',
           'answer_type' => 'Note',
       ]);
     }

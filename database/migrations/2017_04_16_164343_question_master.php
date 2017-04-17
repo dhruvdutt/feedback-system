@@ -15,8 +15,8 @@ class QuestionMaster extends Migration
     {
       Schema::create('question_master', function(Blueprint $table) {
         $table->increments('question_id');
-        $table->string('course_id');
-        $table->unsignedInteger('term_id');
+        $table->string('course_id')->nullable();
+        $table->unsignedInteger('term_id')->nullable();
         $table->string('question');
         $table->unsignedInteger('answer_type_id');
         $table->boolean('lecture');
