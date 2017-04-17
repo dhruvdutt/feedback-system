@@ -15,6 +15,9 @@ class ProgramCourseTermController extends Controller
     public function index()
     {
         //
+        $data = ProgramCourseTerm::all();
+
+        return response()->json($data);
     }
 
     /**

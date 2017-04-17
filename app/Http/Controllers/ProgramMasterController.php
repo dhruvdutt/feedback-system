@@ -14,7 +14,9 @@ class ProgramMasterController extends Controller
      */
     public function index()
     {
-        //
+        $data = ProgramMaster::all();
+
+        return response()->json($data);
     }
 
     /**
@@ -36,6 +38,9 @@ class ProgramMasterController extends Controller
     public function store(Request $request)
     {
         //
+        $programme = new ProgramMaster;
+        $programme->program_name = $request->program_name;
+        $programme->save();
     }
 
     /**
@@ -69,7 +74,9 @@ class ProgramMasterController extends Controller
      */
     public function update(Request $request, ProgramMaster $programMaster)
     {
-        //
+        $programme = ProgramMaster::find($request->program_id);
+        $programme->program_name = $request->program_name;
+        $program->save();
     }
 
     /**
@@ -80,6 +87,6 @@ class ProgramMasterController extends Controller
      */
     public function destroy(ProgramMaster $programMaster)
     {
-        //
+        
     }
 }

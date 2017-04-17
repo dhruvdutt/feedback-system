@@ -14,7 +14,9 @@ class TermController extends Controller
      */
     public function index()
     {
-        //
+        $terms = TermYearMaster::all();
+
+        return response()->json($terms);
     }
 
     /**
@@ -81,5 +83,7 @@ class TermController extends Controller
     public function destroy(TermYearMaster $termYearMaster)
     {
         //
+        var_dump($termYearMaster);
+        return response()->json($termYearMaster);
     }
 }

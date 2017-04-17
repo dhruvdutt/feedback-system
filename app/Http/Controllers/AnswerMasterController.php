@@ -15,6 +15,9 @@ class AnswerMasterController extends Controller
     public function index()
     {
         //
+        $data = AnswerMaster::all();
+
+        return response()->json($data);
     }
 
     /**
