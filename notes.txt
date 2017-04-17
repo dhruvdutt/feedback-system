@@ -8,7 +8,7 @@ ADMIN /admin
         Course
         ProgramCourseTerm
         AnswerTypes
-        
+
         FixedQuestions (Add Question, Type) FixedQuestionsOptions ()
         CustomQuestions
 
@@ -33,11 +33,3 @@ STUDENT
         Select FixedQuestions &
         Custom Questions with specific CourseID and TermID
         Append both and return for each course.
-
-        
-
-        
-        
-
-
-    
