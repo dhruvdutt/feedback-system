@@ -15,9 +15,9 @@ class ProgramMasterController extends Controller
     public function index()
     {
         $programs = ProgramMaster::all();
-        // return response()->json($programs);
+         return response()->json($programs);
 
-        return view('admin.program.base', ['programs' => $programs]);
+//        return view('admin.program.base', ['programs' => $programs]);
     }
 
     /**

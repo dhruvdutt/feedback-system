@@ -39,39 +39,23 @@ delete - /term/{anything} - destroy
 
 */
 
-// Route::resource('term','TermController');
-
-/*Route::get('/answer','AnswerMasterController@index');*/
-
-// Route::resource('answer','AnswerMasterController');
-// Route::resource('attendance','AttendanceController');
-// Route::resource('course','CourseMasterController');
-// Route::resource('feedback','FeedbackController');
-// Route::resource('metadata','FeedbackMetadataController');
-// Route::resource('program','ProgramMasterController');
-// Route::resource('programCourse','ProgramCourseTermController');
-// Route::resource('question','QuestionMasterController');
-// Route::resource('radio','RadioOptionsMasterController');
-// Route::resource('studentFeedback','StudentFeedbackMasterController');
-// Route::resource('user','UserMasterController');
-
-// Admin routes
+// ADMIN routes: /admin/settings/
 Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
-
-  Route::group(['prefix' => 'settings'], function () {
+		Route::group(['prefix' => 'settings'], function () {
     // Route::get('terms', ['uses' => 'AdminController@terms']);
-	Route::resource('term','TermController');
-    Route::resource('answer','AnswerMasterController');
-	Route::resource('attendance','AttendanceController');
-	Route::resource('course','CourseMasterController');
-	Route::resource('feedback','FeedbackController');
-	Route::resource('metadata','FeedbackMetadataController');
-	Route::resource('program','ProgramMasterController');
-	Route::resource('programCourse','ProgramCourseTermController');
-	Route::resource('question','QuestionMasterController');
-	Route::resource('radio','RadioOptionsMasterController');
-	Route::resource('studentFeedback','StudentFeedbackMasterController');
-	Route::resource('user','UserMasterController');
+
+				Route::resource('term','TermController');
+				Route::resource('answer','AnswerMasterController');
+				Route::resource('attendance','AttendanceController');
+				Route::resource('course','CourseMasterController');
+				Route::resource('feedback','FeedbackController');
+				Route::resource('metadata','FeedbackMetadataController');
+				Route::resource('program','ProgramMasterController');
+				Route::resource('programCourseTerm','ProgramCourseTermController');
+				Route::resource('question','QuestionMasterController');
+				Route::resource('radio','RadioOptionsMasterController');
+				Route::resource('studentFeedback','StudentFeedbackMasterController');
+				Route::resource('user','UserMasterController');
   });
 
   Route::get('dashboard', ['uses' => 'AdminController@dashboard']);

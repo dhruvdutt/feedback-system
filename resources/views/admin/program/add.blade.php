@@ -6,7 +6,7 @@
             <md-card-content>
                 <div layout="column" layout-padding>
                     <h2>Program Add</h2>
-                    <form method="post" action="/admin/settings/term">
+                    <form method="post" action="/admin/settings/program">
                         {{ csrf_field() }}
                         <div flex="grow" layout="row">
                             <md-input-container flex="50">

@@ -15,9 +15,9 @@ class TermController extends Controller
     public function index()
     {
         $terms = TermYearMaster::all();
-        // return response()->json($terms);
+         return response()->json($terms);
 
-        return view('admin.term.base', ['terms' => $terms]);
+//		      return view('admin.term.base', ['terms' => $terms]);
     }
 
     /**

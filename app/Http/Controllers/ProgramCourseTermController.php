@@ -17,16 +17,11 @@ class ProgramCourseTermController extends Controller
      */
     public function index()
     {
-        //
-        $program = ProgramMaster::all();
-        $course = CourseMaster::all();
-        $term = TermYearMaster::all();
+		    $list = ProgramCourseTerm::all();
+//      return response()->json($list);
 
-        return response()->json([
-            'program' => $program,
-            'course' => $course,
-            'term' => $term
-        ]);
+		    return view('admin.programCourse.base', ['list' => $list]);
+
     }
 
     /**
@@ -36,7 +31,21 @@ class ProgramCourseTermController extends Controller
      */
     public function create()
     {
-        //
+		      $programs = ProgramMaster::all();
+        $courses = CourseMaster::all();
+        $terms = TermYearMaster::all();
+
+		      return view('admin.programCourse.add', [
+		      		'programs' => $programs,
+		      		'courses' => $courses,
+		      		'terms' => $terms
+		      ]);
+
+//        return response()->json([
+//            'program' => $program,
+//            'course' => $course,
+//            'term' => $term
+//        ]);
     }
 
     /**
