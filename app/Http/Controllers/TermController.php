@@ -38,7 +38,13 @@ class TermController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $term = new TermYearMaster;
+        
+        $term->term_name = $request->term_name;
+        $term->year_name = $request->year_name;
+
+        $term->save();
+
     }
 
     /**

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ProgramCourseTerm;
+use App\ProgramMaster;
+use App\CourseMaster;
+use App\TermYearMaster;
 use Illuminate\Http\Request;
 
 class ProgramCourseTermController extends Controller
@@ -15,9 +18,15 @@ class ProgramCourseTermController extends Controller
     public function index()
     {
         //
-        $data = ProgramCourseTerm::all();
+        $program = ProgramMaster::all();
+        $course = CourseMaster::all();
+        $term = TermYearMaster::all();
 
-        return response()->json($data);
+        return response()->json([
+            'program' => $program,
+            'course' => $course,
+            'term' => $term
+        ]);
     }
 
     /**
@@ -38,7 +47,12 @@ class ProgramCourseTermController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $programCourse = new ProgramCourseTerm;
+        $programCourse->program_id = $request->program_id;
+        $programCourse->course_id = $request->course_id;
+        $programCourse->term_id = $request->term_id;
+
+        $programCourse->save();
     }
 
     /**
