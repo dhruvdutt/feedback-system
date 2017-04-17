@@ -24,3 +24,6 @@ Route::post('/feedback', ['uses' => 'FeedbackController@create']);
 // Rating
 Route::get('/rating', ['uses' => 'RatingController@index']);
 Route::post('/rating', ['uses' => 'RatingController@create']);
+
+
+Route::resource('term','TermController');
