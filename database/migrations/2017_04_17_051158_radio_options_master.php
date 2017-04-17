@@ -15,7 +15,7 @@ class RadioOptionsMaster extends Migration
     {
         Schema::create('radio_options_master', function(BluePrint $table) {
             $table->increments('option_id');
-            $table->unsignedInteger('question_id');
+            $table->unsignedInteger('question_id')->nullable();
             $table->string('option');
 
             $table->foreign('question_id')->references('question_id')->on('question_master');

@@ -19,11 +19,11 @@ class DatabaseSeeder extends Seeder
         $this->call(ProgramSeeder::class);
         $this->call(CourseSeeder::class);
         $this->call(ProgramCourseTermSeeder::class);
-        $this->call(QuestionSeeder::class); //
         $this->call(AnswerSeeder::class);
+        $this->call(QuestionSeeder::class); //
         $this->call(UserSeeder::class);
         $this->call(FeedbackMetaDataSeeder::class);
-        $this->call(AttendanceSeeder::class);
+        $this->call(AttendenceSeeder::class);
         $this->call(FeedbackSeeder::class);
         $this->call(RadioOptionSeeder::class);
         $this->call(StudentFeedbackSeeder::class);
