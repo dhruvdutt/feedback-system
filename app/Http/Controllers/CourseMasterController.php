@@ -38,7 +38,15 @@ class CourseMasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $course = new CourseMaster;
+
+        $course->course_name = $request->course_name;
+        $course->course_type = $request->course_type;
+        $course->lecture_grade = $request->lecture_grade;
+        $course->lab_grade = $request->lab_grade;
+        $course->tutorial_grade = $request->tutorial_grade;
+
+        $course->save();
     }
 
     /**

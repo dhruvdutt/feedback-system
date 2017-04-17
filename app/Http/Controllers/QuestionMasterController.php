@@ -49,6 +49,7 @@ class QuestionMasterController extends Controller
         $question->lecture = $request->lecture;
         $question->lab = $request->lab;
         $question->tutorial = $request->tutorial;
+        
         if ($question->save()) {
             if($request->options != null)
             {
@@ -69,10 +70,14 @@ class QuestionMasterController extends Controller
      * @param  \App\QuestionMaster  $questionMaster
      * @return \Illuminate\Http\Response
      */
-    public function show(QuestionMaster $questionMaster)
+    public function show(QuestionMaster $questionMaster, $course_id)
     {
-        //
+        /*All the questions that are fixed as well as custom questions for a particular course will be returned here*/
+        $questions = QuestionMaster::where('course_id',$course_id)->get();
+
+        return $questions;
     }
+
 
     /**
      * Show the form for editing the specified resource.

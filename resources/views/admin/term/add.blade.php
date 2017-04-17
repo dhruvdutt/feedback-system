@@ -8,12 +8,12 @@
                     <h2>Term Add</h2>
                     <form method="post" action="/admin/settings/term">
                         {{ csrf_field() }}
-                        <div flex="grow" layout="row">
-                            <md-input-container flex="50">
-                                <label>Term ID</label>
-                                <input type="number" name="term_id">
-                            </md-input-container>
-                        </div>
+                        {{--<div flex="grow" layout="row">--}}
+                            {{--<md-input-container flex="50">--}}
+                                {{--<label>Term ID</label>--}}
+                                {{--<input type="number" name="term_id">--}}
+                            {{--</md-input-container>--}}
+                        {{--</div>--}}
                         <div flex="grow" layout="row">
                             <md-input-container flex="50">
                                 <label>Term Name</label>

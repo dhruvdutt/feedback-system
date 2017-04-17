@@ -39,7 +39,6 @@ class TermController extends Controller
     public function store(Request $request)
     {
 				    $term = new TermYearMaster;
-				    $term->term_id   = $request->input('term_id');
 				    $term->term_name = $request->input('term_name');
 				    $term->year_name = $request->input('year_name');
 				    $term->save();

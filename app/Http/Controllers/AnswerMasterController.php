@@ -38,7 +38,9 @@ class AnswerMasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $answer = new AnswerMaster;
+        $answer->answer_type = $request->answer_type;
+        $answer->save;
     }
 
     /**
