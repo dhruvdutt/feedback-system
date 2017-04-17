@@ -1,6 +1,6 @@
 angular
 .module('app.home')
-.controller('HomeController', controller);
+.controller('DialogController', controller);
 
 controller.$inject = [];
 
@@ -12,7 +12,5 @@ function controller() {
   vm.shouldFormBeDisabled = shouldFormBeDisabled;
 
   // //////////////////////////////
-  function shouldFormBeDisabled() {
-    return vm.tokenForm.$invalid;
-  }
+
 }

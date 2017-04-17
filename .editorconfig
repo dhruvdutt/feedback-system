@@ -1,0 +1,11 @@
+root = true
+
+[resources/views/**/**.php]
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 2
+
+[resources/views/**.php]
+trim_trailing_whitespace = true
+indent_style = tab
+indent_size = 2

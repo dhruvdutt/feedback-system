@@ -10,18 +10,22 @@ ADMIN /admin
         AnswerTypes
 
         FixedQuestions (Add Question, Type) FixedQuestionsOptions ()
+            # AnswerTypes Array
         CustomQuestions
+            + Courses Array
+            + Terms Array
+            
 
     /dashboard
         -> Show Old Feedback Term and Dates
         -> Start Feedback, Select Term, Start/End Date
         -> Configure custom questions => Redirect to /settings (CustomQuestions)
-        
+
 
 SUPERADMIN /superadmin
     /settings
         Users
-        
+
     /dashboard
         Show Reports
 

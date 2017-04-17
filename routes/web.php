@@ -56,7 +56,7 @@ delete - /term/{anything} - destroy
 // Route::resource('user','UserMasterController');
 
 // Admin routes
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
 
   Route::group(['prefix' => 'settings'], function () {
     // Route::get('terms', ['uses' => 'AdminController@terms']);

@@ -11,13 +11,13 @@
       <md-sidemenu-group>
         <md-sidemenu-content md-heading="Settings" md-arrow="true">
           <md-sidemenu-button href="/admin/settings/term">Terms</md-sidemenu-button>
-          <md-sidemenu-button href="#">Programs</md-sidemenu-button>
-          <md-sidemenu-button href="#">Course</md-sidemenu-button>
-          <md-sidemenu-button href="#">ProgramCourseTerm</md-sidemenu-button>
-          <md-sidemenu-button href="#">AnswerTypes</md-sidemenu-button>
-          <md-sidemenu-button href="#">FixedQuestions</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/program">Programs</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/course">Course</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/programCourse">ProgramCourseTerm</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/answerTypes">AnswerTypes</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/fixedQuestions">FixedQuestions</md-sidemenu-button>
           <md-sidemenu-button href="#">FixedQuestionsOptions</md-sidemenu-button>
-          <md-sidemenu-button href="#">CustomQuestions</md-sidemenu-button>
+          <md-sidemenu-button href="/admin/settings/customQuestions">CustomQuestions</md-sidemenu-button>
         </md-sidemenu-content>
 
         <md-sidemenu-button href="/admin/dashboard">Dashboard</md-sidemenu-button>

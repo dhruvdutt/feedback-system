@@ -14,9 +14,10 @@ class ProgramMasterController extends Controller
      */
     public function index()
     {
-        $data = ProgramMaster::all();
+        $programs = ProgramMaster::all();
+        // return response()->json($programs);
 
-        return response()->json($data);
+        return view('admin.program.base', ['programs' => $programs]);
     }
 
     /**
@@ -26,7 +27,7 @@ class ProgramMasterController extends Controller
      */
     public function create()
     {
-        //
+		    return view('admin.program.add');
     }
 
     /**
@@ -37,10 +38,10 @@ class ProgramMasterController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $programme = new ProgramMaster;
-        $programme->program_name = $request->program_name;
-        $programme->save();
+        $program = new ProgramMaster;
+        $program->program_id   = $request->program_id;
+        $program->program_name = $request->program_name;
+        $program->save();
     }
 
     /**
