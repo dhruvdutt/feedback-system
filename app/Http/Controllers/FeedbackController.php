@@ -14,8 +14,8 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-
-		      return response()->json(json_decode(
+        return view('feedback')->with('data',
+          json_encode(
 		      		'{
 												"course": ["PC613", "EC111"],
 												"fixedQuestions": [
@@ -58,7 +58,8 @@ class FeedbackController extends Controller
 														}
 													]
 												}'
-		      ));
+        )
+      );
     }
 
     /**

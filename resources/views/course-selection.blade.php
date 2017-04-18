@@ -1,40 +1,41 @@
 @extends('base-layout')
 @section('content')
-  <div class="course-selection-container">
-    <form action="/api/course-selection" method="post">
+  <div class="course-selection-container container">
+    <form action="/course-selection" method="post">
       {{ csrf_field() }}
-      <h2 class="text-center md-title">Select your courses</h2>
-      <div layout="row" layout-xs="column">
-        <div layout="column" flex="50" flex-xs="100">
-          <md-card>
-            <md-card-content>
-              <h3 class="md-subtitle">Code</h3>
+      <h4 class="text-center">Select your courses</h4>
+			<div class="row">
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h4>Core</h4>
               @foreach($core as $c)
-                <div layout="row">
-                  <md-checkbox name="courses[]" value="{{$c}}" flex>{{$c}}</md-checkbox>
-                </div>
+								<div class="checkbox">
+				          <label>
+				            <input type="checkbox" name="courses[]" value="{{$c}}"> {{$c}}
+				          </label>
+				        </div>
               @endforeach
-            </md-card-content>
-          </md-card>
-        </div>
-        <div layout="column" flex="50" flex-xs="100">
-          <md-card>
-            <md-card-content>
-              <h3 class="md-subtitle">Electives</h3>
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<h4>Electives</h4>
               @foreach($electives as $e)
-                <div layout="row">
-                  <md-checkbox name="courses[]" value="{{$e}}" checked="false" flex>{{$e}}</md-checkbox>
-                </div>
+								<div class="checkbox">
+				          <label>
+				            <input type="checkbox" name="courses[]" value="{{$e}}"> {{$e}}
+				          </label>
+				        </div>
               @endforeach
-            </md-card-content>
-          </md-card>
-        </div>
-      </div>
-      <div layout="row" layout-align="center stretch">
-          <md-button type="submit">
-            <md-icon>arrow_forward</md-icon>
-            Proceed
-          </md-button>
+						</div>
+					</div>
+				</div>
+			</div>
+      <div class="text-center">
+        <button class="btn btn-primary">Proceed</button>
       </div>
     </form>
   </div>

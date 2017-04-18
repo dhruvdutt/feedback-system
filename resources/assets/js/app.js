@@ -3,10 +3,7 @@ require('./bootstrap');
 angular.module('app', [
 
   // 3rd party apps
-  'ngMaterial',
-  'ngMaterialSidemenu',
-  'md.data.table',
-
+  'ui.bootstrap',
   // App modules
   'app.home',
   'app.admin'

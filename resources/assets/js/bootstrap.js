@@ -1,9 +1,7 @@
 window.angular = require('angular');
 require('angular-aria');
 require('angular-animate');
-require('angular-material');
-require('angular-material-sidemenu');
-require('angular-material-data-table');
+require('angular-ui-bootstrap');
 
 window.axios = require('axios');
 window.axios.defaults.baseURL = '/api/';

@@ -1,21 +1,24 @@
 @extends('base-layout')
 @section('content')
-  <div class="welcome-container" layout="column" layout-align="center center" ng-controller="HomeController as vm">
-    <h2 class="text-center md-title">Enter token to give your feedback</h2>
+  <div class="welcome-container container" ng-controller="HomeController as vm">
+    <h4 class="text-center">Enter token to give your feedback</h4>
     <form action="/" method="post" name="vm.tokenForm">
-      <md-card class="enter-token-card">
-        {{ csrf_field() }}
-        <md-card-content>
-          <div layout="column" flex>
-            <md-input-container>
-              <input type="text" placeholder="Enter your token here" ng-model="vm.token" name="token" required />
-            </md-input-container>
-          </div>
-          <div layout="column" layout-align="center stretch">
-            <md-button type="submit" class="md-primary md-raised" ng-disabled="vm.shouldFormBeDisabled()">Proceed</md-button>
-          </div>
-        </md-card-content>
-      </md-card>
+			{{ csrf_field() }}
+			<div class="row">
+				<div class="col-md-4 col-md-offset-4">
+					<div class="panel panel-default">
+						<div class="panel-body">
+							<div class="form-group">
+								<label for="token">Enter token</label>
+								<input id="token" class="form-control" type="text" name="token" ng-model="vm.token" name="token" required />
+							</div>
+							<div class="form-group">
+								<button type="submit" class="btn btn-primary btn-block">Proceed</button>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
     </form>
   </div>
 @stop

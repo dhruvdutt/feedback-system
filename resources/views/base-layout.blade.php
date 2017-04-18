@@ -16,9 +16,9 @@
     <body>
         <div id="app" ng-cloak>
           @if (session('message'))
-            <md-content layout-padding class="text-center">
+            <div class="alert alert-dismissible alert-danger text-center">
                 {{ session('message') }}
-            </md-content>
+            </div>
           @endif
           @yield('content')
         </div>
