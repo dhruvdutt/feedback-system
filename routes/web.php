@@ -11,20 +11,14 @@
 |
 */
 
-//Route::get('/', function () {
-//    return view('welcome');
-//});
+Route::get('/', ['uses' => 'HomeController@index']);
+Route::post('/', ['uses' => 'HomeController@checkToken']);
 
-Route::get('/', ['uses' => 'HomeController@checkToken']);
+Route::get('/course-selection', ['uses' => 'CourseSelectionController@index']);
+Route::post('/course-selection', ['uses' => 'CourseSelectionController@post']);
 
-// Route::get('/course-selection', ['uses' => 'CourseController@index']);
-
- Route::get('/feedback', ['uses' => 'FeedbackController@index']);
-// Route::post('/feedback', ['uses' => 'FeedbackController@create']);
-
-// Rating
-// Route::get('/rating', ['uses' => 'RatingController@index']);
-// Route::post('/rating', ['uses' => 'RatingController@create']);
+Route::get('/rating', ['uses' => 'RatingController@index']);
+Route::post('/rating', ['uses' => 'RatingController@create']);
 
 /*
 For all the routes listed below following conventions will be followed using first term as an example
