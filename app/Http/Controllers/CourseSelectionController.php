@@ -37,6 +37,13 @@ class CourseSelectionController extends Controller
 
   public function post(Request $request)
   {
+  		$coreCourses = array();
+		  $electiveCourses = array();
+		  $fixedQuestions = array();
+		  $fixedQuestionsOptions = array();
+		  $customQuestions = array();
+		  $customQuestionsOptions = array();
+
 		  $coreCourses        = $request->session()->pull('coreCourses')[0];
 		  $electiveCoursesAll = $request->session()->pull('electiveCourses')[0];
 		  $term_id            = $request->session()->get('term_id');
@@ -51,15 +58,14 @@ class CourseSelectionController extends Controller
 		  $fixedQuestionsOptions = RadioOptionsMaster::whereNull('question_id')->get();
 
 		  if (sizeof($electiveCoursesIds) > 0)
-		  		$mergedQuestions = array_merge($coreCourses, $electiveCourses);
+		  		$mergedCourses = array_merge($coreCourses, $electiveCourses);
 		  else
-				  $mergedQuestions = $coreCourses;
+				  $mergedCourses = $coreCourses;
 
-		  $customQuestions = $this->getCustomQuestions($mergedQuestions, $term_id);
+		  $customQuestions = $this->getCustomQuestions($mergedCourses, $term_id);
 
 		  $request->session()->push('coreCourses', $coreCourses);
-		  if (sizeof($electiveCoursesIds) > 0)
-		    $request->session()->push('electiveCourses', $electiveCourses);
+		  $request->session()->push('electiveCourses', $electiveCourses);
 		  $request->session()->push('fixedQuestions', $fixedQuestions);
 		  $request->session()->push('fixedQuestionsOptions', $fixedQuestionsOptions);
 		  $request->session()->push('customQuestions', $customQuestions);
@@ -76,6 +82,13 @@ class CourseSelectionController extends Controller
 
   }
 
+  private function getCustomQuestionsOptions($question) {
+
+				  return $options = RadioOptionsMaster::where('question_id', $question->question_id)
+						                                    ->get();
+
+  }
+
   private function getCustomQuestions($courses, $term_id) {
 
   		$questions = array();
@@ -85,6 +98,8 @@ class CourseSelectionController extends Controller
 																		              ->where('term_id', $term_id)
 																		              ->get();
 				  foreach ($courseQuestions as $question) {
+				  		$options = $this->getCustomQuestionsOptions($question);
+						  $question->options = $options;
 						  array_push($questions, $question);
 				  }
   		}
