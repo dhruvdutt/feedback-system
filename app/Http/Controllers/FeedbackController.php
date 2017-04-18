@@ -38,6 +38,7 @@ class FeedbackController extends Controller
 
     public function create(Request $request)
     {
+      return $request->all();
       return view('rating');
     }
 
