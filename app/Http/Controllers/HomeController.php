@@ -12,7 +12,7 @@ class HomeController extends Controller
 
     public function index()
     {
-      return view('welcome');
+        return view('welcome');
     }
 
     public function checkToken(Request $request)
@@ -30,55 +30,14 @@ class HomeController extends Controller
 
 		      if (sizeof($program) <= 0) return redirect('/')->with('message', 'The token is incorrect');
 
-		      $coreCourses = $this->getCoreCourses($program, $term_id);
-		      $electiveCourses = $this->getElectiveCourses($program, $term_id);
+		      $request->session()->put('program_id', $program->program_id);
+		      $request->session()->put('term_id', $term_id);
 
-//		      return response()->json([
-//				      'coreCourses' => $coreCourses,
-//				      'electiveCourses' => $electiveCourses
-//		      ]);
-
-        return redirect('course-selection')
-		                      ->with('coreCourses', $coreCourses)
-		                      ->with('electiveCourses', $electiveCourses);
+		      return redirect('course-selection');
 
       } else {
         return redirect('/')->with('message', 'The token is incorrect');
       }
-    }
-
-    private function getCoreCourses($program, $term_id) {
-
-		    $allCoreCourses = CourseMaster::where('course_type', 'Core')->get();
-		    $coreCourses = array();
-
-		    foreach ($allCoreCourses as $course) {
-				    $term = ProgramCourseTerm::where('program_id', $program->program_id)
-						    ->where('term_id', $term_id)
-						    ->where('course_id', $course->course_id)
-						    ->first();
-				    if (sizeof($term) > 0) array_push($coreCourses, $course);
-		    }
-
-		    return $coreCourses;
-
-    }
-
-    private function getElectiveCourses($program, $term_id) {
-
-		    $allElectiveCourses = CourseMaster::where('course_type', 'Elective')->get();
-		    $electiveCourses = array();
-
-		    foreach ($allElectiveCourses as $course) {
-				    $term = ProgramCourseTerm::where('program_id', $program->program_id)
-						    ->where('term_id', $term_id)
-						    ->where('course_id', $course->course_id)
-						    ->first();
-				    if (sizeof($term) > 0) array_push($electiveCourses, $course);
-		    }
-
-		    return $electiveCourses;
-
     }
 
 				private function getProgram($student_id) {

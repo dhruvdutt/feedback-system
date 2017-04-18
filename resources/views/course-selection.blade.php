@@ -9,10 +9,10 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h4>Core</h4>
-              @foreach($core as $c)
+              @foreach($coreCourses as $c)
 								<div class="checkbox">
 				          <label>
-				            <input type="checkbox" name="courses[]" value="{{$c}}"> {{$c}}
+				            <input type="checkbox" name="courses[]" value="{{$c->course_id}}" checked disabled> {{$c->course_name}}
 				          </label>
 				        </div>
               @endforeach
@@ -23,10 +23,10 @@
 					<div class="panel panel-default">
 						<div class="panel-body">
 							<h4>Electives</h4>
-              @foreach($electives as $e)
+              @foreach($electiveCourses as $e)
 								<div class="checkbox">
 				          <label>
-				            <input type="checkbox" name="courses[]" value="{{$e}}"> {{$e}}
+				            <input type="checkbox" name="courses[]" value="{{$e->course_id}}"> {{$e->course_name}}
 				          </label>
 				        </div>
               @endforeach
