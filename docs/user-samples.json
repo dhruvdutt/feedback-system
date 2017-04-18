@@ -20,10 +20,11 @@ S: POST /api/courses
 			{
 				"question_id": "fixedQuestions1",
 				"question": "Dafuq?",
-				"answer_type": "radio"
+				"answer_type_id": "1" // Radio
+				"answer_type_id": "2" // Note
 			}
 		],
-		"fixedQuestionsAnswers": [
+		"fixedQuestionsOptions": [
 			{
 				"options_id": "1",
 				"options_value": "Yes"
