@@ -43,5 +43,21 @@ class CourseSeeder extends Seeder
           'lab_grade' => '4',
           'tutorial_grade' => '0',
       ]);
+      DB::table('course_master')->insert([
+          'course_id' => 'IT616',
+          'course_name' => 'Cloud Computing',
+          'course_type' => 'Elective',
+          'lecture_grade' => '0',
+          'lab_grade' => '4',
+          'tutorial_grade' => '0',
+      ]);
+      DB::table('course_master')->insert([
+          'course_id' => 'IT999',
+          'course_name' => 'Machine Learning',
+          'course_type' => 'Elective',
+          'lecture_grade' => '2',
+          'lab_grade' => '4',
+          'tutorial_grade' => '2',
+      ]);
     }
 }
