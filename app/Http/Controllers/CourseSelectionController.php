@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\ProgramMaster;
 use App\CourseMaster;
 use App\ProgramCourseTerm;
+use App\QuestionMaster;
+use App\RadioOptionsMaster;
+use App\AnswerMaster;
 
 class CourseSelectionController extends Controller
 {
@@ -16,6 +19,9 @@ class CourseSelectionController extends Controller
 
 		  $coreCourses = $this->getCoreCourses($program_id, $term_id);
 		  $electiveCourses = $this->getElectiveCourses($program_id, $term_id);
+
+		  $request->session()->push('coreCourses', $coreCourses);
+		  $request->session()->push('electiveCourses', $electiveCourses);
 
 //		  return response()->json([
 //				  'coreCourses' => $coreCourses,
@@ -31,7 +37,90 @@ class CourseSelectionController extends Controller
 
   public function post(Request $request)
   {
-    return redirect('/feedback');
+		  $coreCourses        = $request->session()->pull('coreCourses')[0];
+		  $electiveCoursesAll = $request->session()->pull('electiveCourses')[0];
+		  $term_id            = $request->session()->get('term_id');
+
+		  $electiveCoursesIds = $request->input('courses');
+
+		  if (sizeof($electiveCoursesIds) > 0)
+		  		$electiveCourses = $this->getSelectedElectiveCourses($electiveCoursesAll, $electiveCoursesIds);
+
+		  $fixedQuestions = $this->getFixedQuestions();
+
+		  $fixedQuestionsOptions = RadioOptionsMaster::whereNull('question_id')->get();
+
+		  if (sizeof($electiveCoursesIds) > 0)
+		  		$mergedQuestions = array_merge($coreCourses, $electiveCourses);
+		  else
+				  $mergedQuestions = $coreCourses;
+
+		  $customQuestions = $this->getCustomQuestions($mergedQuestions, $term_id);
+
+		  $request->session()->push('coreCourses', $coreCourses);
+		  if (sizeof($electiveCoursesIds) > 0)
+		    $request->session()->push('electiveCourses', $electiveCourses);
+		  $request->session()->push('fixedQuestions', $fixedQuestions);
+		  $request->session()->push('fixedQuestionsOptions', $fixedQuestionsOptions);
+		  $request->session()->push('customQuestions', $customQuestions);
+
+		  return redirect('feedback');
+
+//    return response()->json([
+//				  'coreCourses' => $coreCourses,
+//				  'electiveCourses' => $electiveCourses,
+//				  'fixedQuestions' => $fixedQuestions,
+//				  'fixedQuestionsOptions' => $fixedQuestionsOptions,
+//				  'customQuestions' => $customQuestions
+//		  ]);
+
+  }
+
+  private function getCustomQuestions($courses, $term_id) {
+
+  		$questions = array();
+
+		  foreach ($courses as $course) {
+				  $courseQuestions = QuestionMaster::where('course_id', $course->course_id)
+																		              ->where('term_id', $term_id)
+																		              ->get();
+				  foreach ($courseQuestions as $question) {
+						  array_push($questions, $question);
+				  }
+  		}
+
+  		return $questions;
+
+  }
+
+  private function getFixedQuestions() {
+
+		  // @TODO  Get & Store Fixed Questions Course Wise | Lab / Lecture / Tutorial
+		  $questions = QuestionMaster::whereNull('course_id')
+																														 ->whereNull('term_id')
+																														 ->get();
+
+		  foreach ($questions as $question) {
+				  $answer = AnswerMaster::where('answer_type_id', $question->answer_type_id)->first();
+				  $question->answer_type = $answer->answer_type;
+		  }
+
+		  return $questions;
+
+  }
+
+  private function getSelectedElectiveCourses($electiveCoursesAll, $electiveCoursesIds) {
+
+		  $electiveCourses = array();
+
+		  foreach ($electiveCoursesAll as $course) {
+				  foreach ($electiveCoursesIds as $id) {
+						  if (($course->course_id) == $id) array_push($electiveCourses, $course);
+				  }
+		  }
+
+		  return $electiveCourses;
+
   }
 
 
