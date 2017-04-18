@@ -18,6 +18,7 @@ class QuestionMaster extends Migration
         $table->string('course_id')->nullable();
         $table->unsignedInteger('term_id')->nullable();
         $table->string('question');
+        $table->string('question_type');
         $table->unsignedInteger('answer_type_id');
         $table->boolean('lecture');
         $table->boolean('lab');
