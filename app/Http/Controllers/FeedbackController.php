@@ -19,19 +19,19 @@ class FeedbackController extends Controller
 				    $electiveCourses = array();
 
 //      return response()->json([
-//						  'coreCourses' => $coreCourses,
-//						  'electiveCourses' => $electiveCourses,
-//						  'fixedQuestions' => $fixedQuestions,
-//						  'fixedQuestionsOptions' => $fixedQuestionsOptions,
-//						  'customQuestions' => $customQuestions
+//						  'coreCourses' => $coreCourses[0],
+//						  'electiveCourses' => $electiveCourses[0],
+//						  'fixedQuestions' => $fixedQuestions[0],
+//						  'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
+//						  'customQuestions' => $customQuestions[0]
 //				  ]);
 
 		    return view('feedback')->with([
-				    'coreCourses' => $coreCourses,
-				    'electiveCourses' => $electiveCourses,
-				    'fixedQuestions' => $fixedQuestions,
-				    'fixedQuestionsOptions' => $fixedQuestionsOptions,
-				    'customQuestions' => $customQuestions
+				    'coreCourses' => $coreCourses[0],
+				    'electiveCourses' => $electiveCourses[0],
+				    'fixedQuestions' => $fixedQuestions[0],
+				    'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
+				    'customQuestions' => $customQuestions[0]
 		    ]);
 
     }
