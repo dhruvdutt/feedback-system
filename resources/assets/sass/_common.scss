@@ -12,15 +12,9 @@ body {
   background: #2A3A3F !important;
 }
 
-// Text classes
-.text-center {
-  text-align: center !important;
-}
-
-.container {
-  padding: 20px;
-}
-
-.full-width-button {
-  width: 100% !important;
+.flex-center-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }

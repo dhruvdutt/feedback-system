@@ -1,35 +1,45 @@
 @extends('base-layout')
 @section('content')
-<div layout="row" flex>
-  <md-sidenav md-component-id="left" md-is-locked-open="$mdMedia('gt-md')" class="md-sidenav-left app-side-nav">
-    <md-toolbar class="main-header">
-      <div class="md-toolbar-tools">
-        <h1>Admin panel</h1>
-      </div>
-    </md-toolbar>
-    <md-sidemenu>
-      <md-sidemenu-group>
-        <md-sidemenu-content md-heading="Settings" md-arrow="true">
-          <md-sidemenu-button href="/admin/settings/term">Terms</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/program">Programs</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/course">Course</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/programCourse">ProgramCourseTerm</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/answerTypes">AnswerTypes</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/fixedQuestions">FixedQuestions</md-sidemenu-button>
-          <md-sidemenu-button href="#">FixedQuestionsOptions</md-sidemenu-button>
-          <md-sidemenu-button href="/admin/settings/customQuestions">CustomQuestions</md-sidemenu-button>
-        </md-sidemenu-content>
-
-        <md-sidemenu-button href="/admin/dashboard">Dashboard</md-sidemenu-button>
-
-        <md-divider></md-divider>
-        <md-sidemenu-button href="#">Logout</md-sidemenu-button>
-
-      </md-sidemenu-group>
-    </md-sidemenu>
-  </md-sidenav>
-  <md-content flex layout-padding>
-    @yield('admin-content')
-  </md-content>
+<div class="container flex-center-container">
+	<div class="row">
+		<div class="col-md-3">
+			<div class="list-group">
+				<a href="/admin/terms" class="list-group-item active">
+				  Terms
+				</a>
+				<a href="/admin/programs" class="list-group-item">
+					Programs
+				</a>
+				<a href="/admin/courses" class="list-group-item">
+					Courses
+				</a>
+				<a href="/admin/program-course-term" class="list-group-item">
+					Program Course Term
+				</a>
+				<a href="/admin/answer-types" class="list-group-item">
+					Answer Types
+				</a>
+				<a href="/admin/fixed-questions" class="list-group-item">
+					Fixed Questions
+				</a>
+				<a href="/admin/fixed-question-options" class="list-group-item">
+					Fixed Questions Options
+				</a>
+				<a href="/admin/custom-questions" class="list-group-item">
+					Custom Questions
+				</a>
+				<a href="/admin/logout" class="list-group-item">
+					Logout
+				</a>
+			</div>
+		</div>
+		<div class="col-md-9">
+			<div class="panels panel-defaults">
+				<div class="panel-bodys">
+					@yield('admin-content')
+				</div>
+			</div>
+		</div>
+	</div>
 </div>
 @stop
