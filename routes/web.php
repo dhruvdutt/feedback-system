@@ -11,14 +11,15 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-// Route::post('/', ['uses' => 'HomeController@checkToken']);
+//Route::get('/', function () {
+//    return view('welcome');
+//});
+
+Route::get('/', ['uses' => 'HomeController@checkToken']);
 
 // Route::get('/course-selection', ['uses' => 'CourseController@index']);
 
-// Route::get('/feedback', ['uses' => 'FeedbackController@index']);
+ Route::get('/feedback', ['uses' => 'FeedbackController@index']);
 // Route::post('/feedback', ['uses' => 'FeedbackController@create']);
 
 // Rating
@@ -39,24 +40,24 @@ delete - /term/{anything} - destroy
 
 */
 
-// ADMIN routes: /admin/settings/
-Route::group(['prefix' => 'admin', 'middleware' => 'web'], function () {
-		Route::group(['prefix' => 'settings'], function () {
-    // Route::get('terms', ['uses' => 'AdminController@terms']);
+// ADMIN routes: /api/admin/settings/
+Route::group(['prefix' => 'api', 'middleware' => 'web'], function () {
+		Route::group(['prefix' => 'admin'], function () {
+				Route::group(['prefix' => 'settings'], function () {
+						Route::resource('term','TermController');
+						Route::resource('answer','AnswerMasterController');
+						Route::resource('attendance','AttendanceController');
+						Route::resource('course','CourseMasterController');
+						Route::resource('feedback','FeedbackController');
+						Route::resource('metadata','FeedbackMetadataController');
+						Route::resource('program','ProgramMasterController');
+						Route::resource('programCourseTerm','ProgramCourseTermController');
+						Route::resource('question','QuestionMasterController');
+						Route::resource('radio','RadioOptionsMasterController');
+						Route::resource('studentFeedback','StudentFeedbackMasterController');
+						Route::resource('user','UserMasterController');
+		  });
 
-				Route::resource('term','TermController');
-				Route::resource('answer','AnswerMasterController');
-				Route::resource('attendance','AttendanceController');
-				Route::resource('course','CourseMasterController');
-				Route::resource('feedback','FeedbackController');
-				Route::resource('metadata','FeedbackMetadataController');
-				Route::resource('program','ProgramMasterController');
-				Route::resource('programCourseTerm','ProgramCourseTermController');
-				Route::resource('question','QuestionMasterController');
-				Route::resource('radio','RadioOptionsMasterController');
-				Route::resource('studentFeedback','StudentFeedbackMasterController');
-				Route::resource('user','UserMasterController');
-  });
-
-  Route::get('dashboard', ['uses' => 'AdminController@dashboard']);
+		  Route::get('dashboard', ['uses' => 'AdminController@dashboard']);
+		});
 });

@@ -14,7 +14,51 @@ class FeedbackController extends Controller
      */
     public function index()
     {
-        //
+
+		      return response()->json(json_decode(
+		      		'{
+												"course": ["PC613", "EC111"],
+												"fixedQuestions": [
+													{
+														"id": "fixedQuestions1",
+														"question": "Dafuq?",
+														"answer_type_id": "1",
+														"answer_type": "radio"
+													}
+												],
+												"fixedQuestionsAnswers": [
+													{
+														"options_id": "1",
+														"options_value": "Yes"
+													},
+													{
+														"options_id": "2",
+														"options_value": "No"
+													}
+												],
+												"customQuestions": [
+														{
+															"id": "customQuestions1",
+															"question": "Why?",
+															"answer_type": {
+																"id": "1",
+																"type": "radio"
+															},
+															"courseId": "PC613",
+															"options": [
+																{
+																	"options_id": "1",
+																	"options_value": "Yes"
+																},
+																{
+																	"options_id": "2",
+																	"options_value": "No"
+																}
+															]
+														}
+													]
+												}'
+		      ));
     }
 
     /**

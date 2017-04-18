@@ -17,5 +17,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::post('/', ['uses' => 'HomeController@checkToken']);
-Route::post('/course-selection', ['uses' => 'CourseController@post']);
+//Route::post('/', ['uses' => 'HomeController@checkToken']);
+//Route::post('/course-selection', ['uses' => 'CourseController@post']);

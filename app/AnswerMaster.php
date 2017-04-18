@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class AnswerMaster extends Model
 {
     //
-
-	protected $table = 'answer_master';
+		public $timestamps = false;
+		protected $table = 'answer_master';
 
 }

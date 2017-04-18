@@ -8,5 +8,6 @@ class ProgramMaster extends Model
 {
     //
 
+		public $timestamps = false;
     protected $table = 'program_master';
 }

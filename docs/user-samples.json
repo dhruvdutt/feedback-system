@@ -1,0 +1,70 @@
+C: /hash
+Return Proceed/Start View
+
+C: /hash/feedback
+S: POST /api/courses
+   
+   req => {
+   		"hash": "",
+
+   }
+
+   res => {
+		"coreCourses": [],
+		"electiveCourses": []
+	}
+
+	res => {
+		"course": ["PC613", "EC111"],
+		"fixedQuestions": [
+			{
+				"question_id": "fixedQuestions1",
+				"question": "Dafuq?",
+				"answer_type": "radio"
+			}
+		],
+		"fixedQuestionsAnswers": [
+			{
+				"options_id": "1",
+				"options_value": "Yes"
+			},
+			{
+				"options_id": "2",
+				"options_value": "No"
+			}
+		],
+		"customQuestions": [
+				{
+					"question_id": "customQuestions1",
+					"question": "Why?",
+					"answer_type": "radio",
+					"courseId": "PC613",
+					"options": [
+						{
+							"options_id": "1",
+							"options_value": "Yes"
+						},
+						{
+							"options_id": "2",
+							"options_value": "No"
+						}
+					]
+				}
+			]
+		}
+
+		res => {
+			"data": [ // ArrayLength = NoOfCourses
+				{
+					"courseId": [ // ArrayLength = NoOfQuestions for EachCourse
+						{
+							"question_id": "1",
+							"answer_type": "radio",
+							"options_id": "",
+							"note": ""
+						}
+					]
+				}
+			]
+		}
+	}

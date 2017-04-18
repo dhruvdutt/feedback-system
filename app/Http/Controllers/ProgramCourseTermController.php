@@ -7,6 +7,8 @@ use App\ProgramMaster;
 use App\CourseMaster;
 use App\TermYearMaster;
 use Illuminate\Http\Request;
+use App\Response;
+
 
 class ProgramCourseTermController extends Controller
 {

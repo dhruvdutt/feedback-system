@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\ProgramMaster;
 use Illuminate\Http\Request;
+use App\Response;
+
 
 class ProgramMasterController extends Controller
 {
@@ -15,7 +17,8 @@ class ProgramMasterController extends Controller
     public function index()
     {
         $programs = ProgramMaster::all();
-         return response()->json($programs);
+
+				    return new Response(200,'OK', $programs);
 
 //        return view('admin.program.base', ['programs' => $programs]);
     }
@@ -42,6 +45,8 @@ class ProgramMasterController extends Controller
         $program->program_id   = $request->program_id;
         $program->program_name = $request->program_name;
         $program->save();
+
+		      return new Response(200,'OK');
     }
 
     /**

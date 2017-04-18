@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\CourseMaster;
 use Illuminate\Http\Request;
+use App\Response;
+
 
 class CourseMasterController extends Controller
 {
@@ -17,7 +19,7 @@ class CourseMasterController extends Controller
         //
         $data = CourseMaster::all();
 
-        return response()->json($data);
+		      return new Response(200,'OK', $data);
     }
 
     /**
@@ -47,6 +49,8 @@ class CourseMasterController extends Controller
         $course->tutorial_grade = $request->tutorial_grade;
 
         $course->save();
+
+		      return new Response(200,'OK');
     }
 
     /**
