@@ -17,6 +17,7 @@ class HomeController extends Controller
 
     public function checkToken(Request $request)
     {
+		    $request->session()->flush();
     		// $token = $request->input('token');
       $token = '123456';
 

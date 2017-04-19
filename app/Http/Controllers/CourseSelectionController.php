@@ -45,7 +45,7 @@ class CourseSelectionController extends Controller
 		  $customQuestionsOptions = array();
 
 		  $coreCourses        = $request->session()->pull('coreCourses')[0];
-		  $electiveCoursesAll = $request->session()->pull('electiveCourses')[0];
+		  $electiveCoursesAll = $request->session()->pull('electiveCourses');
 		  $term_id            = $request->session()->get('term_id');
 
 		  $electiveCoursesIds = $request->input('courses');
@@ -64,11 +64,17 @@ class CourseSelectionController extends Controller
 
 		  $customQuestions = $this->getCustomQuestions($mergedCourses, $term_id);
 
-		  $request->session()->push('coreCourses', $coreCourses);
-		  $request->session()->push('electiveCourses', $electiveCourses);
-		  $request->session()->push('fixedQuestions', $fixedQuestions);
-		  $request->session()->push('fixedQuestionsOptions', $fixedQuestionsOptions);
-		  $request->session()->push('customQuestions', $customQuestions);
+		  $a = $coreCourses;
+		  $b = $electiveCourses;
+		  $c = $fixedQuestions;
+		  $d = $fixedQuestionsOptions;
+		  $e = $customQuestions;
+
+		  $request->session()->push('coreCourses', $a);
+		  $request->session()->push('electiveCourses', $b);
+		  $request->session()->push('fixedQuestions', $c);
+		  $request->session()->push('fixedQuestionsOptions', $d);
+		  $request->session()->push('customQuestions', $e);
 
 		  return redirect('feedback');
 
@@ -128,11 +134,11 @@ class CourseSelectionController extends Controller
 
 		  $electiveCourses = array();
 
-		  foreach ($electiveCoursesAll as $course) {
-				  foreach ($electiveCoursesIds as $id) {
-						  if (($course->course_id) == $id) array_push($electiveCourses, $course);
-				  }
-		  }
+//		  foreach ($electiveCoursesAll as $course) {
+//				  foreach ($electiveCoursesIds as $id) {
+//						  if (($course->course_id) == $id) array_push($electiveCourses, $course);
+//				  }
+//		  }
 
 		  return $electiveCourses;
 
