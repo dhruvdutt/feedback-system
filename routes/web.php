@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::resource('answer','AnswerMasterController');
 		Route::resource('attendance','AttendanceController');
 		Route::resource('course','CourseMasterController');
+		Route::resource('import','ImportController');
 		Route::resource('feedback','FeedbackMasterController');
 		Route::resource('metadata','FeedbackMetadataController');
 		Route::resource('program','ProgramMasterController');

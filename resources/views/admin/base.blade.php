@@ -11,6 +11,9 @@
 				<a href="/admin/settings/feedback" class="collection-item">
 					Feedback
 				</a>
+				<a href="/admin/settings/import" class="collection-item">
+					Importing Data
+				</a>
 				<a href="/admin/settings/program-course-term" class="collection-item">
 					Program Course Term
 				</a>
