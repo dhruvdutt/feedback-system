@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\AnswerMaster;
 use Illuminate\Http\Request;
 
-class AnswerMasterController extends Controller
+class FeedbackMasterController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,8 +13,7 @@ class AnswerMasterController extends Controller
      */
     public function index()
     {
-      $data = AnswerMaster::all();
-      return view('admin.answer-type.base')->with('data', $data);
+        return view('admin.feedback.base');
     }
 
     /**
@@ -36,19 +34,16 @@ class AnswerMasterController extends Controller
      */
     public function store(Request $request)
     {
-        $answer = new AnswerMaster;
-        $answer->answer_type = $request->answer_type;
-        $answer->save();
-        return back();
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\AnswerMaster  $answerMaster
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show(AnswerMaster $answerMaster)
+    public function show($id)
     {
         //
     }
@@ -56,10 +51,10 @@ class AnswerMasterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\AnswerMaster  $answerMaster
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(AnswerMaster $answerMaster)
+    public function edit($id)
     {
         //
     }
@@ -68,10 +63,10 @@ class AnswerMasterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\AnswerMaster  $answerMaster
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, AnswerMaster $answerMaster)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -79,10 +74,10 @@ class AnswerMasterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\AnswerMaster  $answerMaster
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AnswerMaster $answerMaster)
+    public function destroy($id)
     {
         //
     }

@@ -45,23 +45,23 @@ Route::group(['prefix' => 'admin'], function() {
 });
 
 // ADMIN routes: /api/admin/settings/
-Route::group(['prefix' => 'api', 'middleware' => 'web'], function () {
-		Route::group(['prefix' => 'admin'], function () {
-			Route::group(['prefix' => 'settings'], function () {
-				Route::resource('term','TermController');
-				Route::resource('answer','AnswerMasterController');
-				Route::resource('attendance','AttendanceController');
-				Route::resource('course','CourseMasterController');
-				Route::resource('feedback','FeedbackController');
-				Route::resource('metadata','FeedbackMetadataController');
-				Route::resource('program','ProgramMasterController');
-				Route::resource('programCourseTerm','ProgramCourseTermController');
-				Route::resource('question','QuestionMasterController');
-				Route::resource('radio','RadioOptionsMasterController');
-				Route::resource('studentFeedback','StudentFeedbackMasterController');
-				Route::resource('user','UserMasterController');
-	  });
+Route::group(['prefix' => 'admin'], function () {
+	Route::group(['prefix' => 'settings'], function () {
+		Route::resource('term','TermController');
+		Route::resource('answer','AnswerMasterController');
+		Route::resource('attendance','AttendanceController');
+		Route::resource('course','CourseMasterController');
+		Route::resource('feedback','FeedbackMasterController');
+		Route::resource('metadata','FeedbackMetadataController');
+		Route::resource('program','ProgramMasterController');
+		Route::resource('program-course-term','ProgramCourseTermController');
+		Route::resource('question','QuestionMasterController');
+		Route::resource('fixed-question','FixedQuestionController');
+		Route::resource('custom-question','CustomQuestionController');
+		Route::resource('radio','RadioOptionsMasterController');
+		Route::resource('studentFeedback','StudentFeedbackMasterController');
+		Route::resource('user','UserMasterController');
+});
 
-	  Route::get('dashboard', ['uses' => 'AdminController@dashboard']);
-	});
+	Route::get('dashboard', ['uses' => 'AdminController@dashboard']);
 });

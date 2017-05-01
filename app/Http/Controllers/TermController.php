@@ -15,11 +15,8 @@ class TermController extends Controller
      */
     public function index()
     {
-        $terms = TermYearMaster::all();
-
-		      return new Response(200,'OK', $terms);
-
-//		      return view('admin.term.base', ['terms' => $terms]);
+      $terms = TermYearMaster::all();
+      return view('admin.term.base', ['terms' => $terms]);
     }
 
     /**
@@ -40,12 +37,12 @@ class TermController extends Controller
      */
     public function store(Request $request)
     {
-				    $term = new TermYearMaster;
-				    $term->term_name = $request->input('term_name');
-				    $term->year_name = $request->input('year_name');
-				    $term->save();
+	    $term = new TermYearMaster;
+	    $term->term_name = $request->input('term_name');
+	    $term->year_name = $request->input('year_name');
+	    $term->save();
 
-		      return new Response(200,'OK');
+      return redirect()->back();
     }
 
     /**
