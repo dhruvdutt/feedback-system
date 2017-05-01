@@ -177,6 +177,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+		      // maatwebsite/excelProvider: Excel Sheet Import Plugin
+		      'Maatwebsite\Excel\ExcelServiceProvider',
+
     ],
 
     /*
@@ -225,6 +228,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+		      // maatwebsite/excel Plugin Alias
+				    'Excel' => 'Maatwebsite\Excel\Facades\Excel',
 
     ],
 
