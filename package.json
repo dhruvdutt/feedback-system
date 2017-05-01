@@ -16,7 +16,8 @@
     "angular-material-data-table": "^0.10.10",
     "angular-material-sidemenu": "^1.0.2",
     "angular-ui-bootstrap": "^2.5.0",
-    "axios": "^0.15.3",
+    "axios": "^0.16.1",
+    "jquery": "^3.2.1",
     "laravel-mix": "^0.8.8"
   },
   "name": "feedback-system",

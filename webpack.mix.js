@@ -11,9 +11,11 @@ const { mix } = require('laravel-mix');
  |
  */
 
-mix.js('resources/assets/js/app.js', 'public/js')
-   .extract(['angular'])
-   .sass('resources/assets/sass/app.scss', 'public/css')
-   .version();
+mix
+  .copy(['resources/assets/js/**/*.html'], 'public/html/')
+  .js('resources/assets/js/app.js', 'public/js')
+  .extract(['angular'])
+  .sass('resources/assets/sass/app.scss', 'public/css')
+  .version();
 
 mix.browserSync('http://localhost:8000/');

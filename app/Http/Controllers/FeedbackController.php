@@ -26,15 +26,15 @@ class FeedbackController extends Controller
 //						  'customQuestions' => $customQuestions[0]
 //				  ]);
 
-				return view('feedback')->with([
-						'coreCourses' => $coreCourses[0],
-						'electiveCourses' => $electiveCourses[0],
-						'fixedQuestions' => $fixedQuestions[0],
-						'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-						'customQuestions' => $customQuestions[0]
-				]);
+		    return view('feedback')->with([
+				    'coreCourses' => $coreCourses[0],
+				    'electiveCourses' => $electiveCourses[0],
+				    'fixedQuestions' => $fixedQuestions[0],
+				    'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
+				    'customQuestions' => $customQuestions[0]
+		    ]);
 
-		}
+    }
 
 		public function create(Request $request)
 		{

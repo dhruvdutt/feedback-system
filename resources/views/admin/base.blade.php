@@ -2,40 +2,38 @@
 @section('content')
 <div class="container flex-center-container">
 	<div class="row">
-		<div class="col-md-3">
-			<div class="list-group">
-				<a href="/admin/terms" class="list-group-item active">
-				  Terms
+		<h5 style="margin-left:1rem !important">Admin panel</h5>
+		<div class="col m3">
+			<div class="collection">
+				<a href="/admin/dashboard" class="collection-item">
+					Home
 				</a>
-				<a href="/admin/programs" class="list-group-item">
-					Programs
+				<a href="/admin/settings/feedback" class="collection-item">
+					Feedback
 				</a>
-				<a href="/admin/courses" class="list-group-item">
-					Courses
-				</a>
-				<a href="/admin/program-course-term" class="list-group-item">
+				<a href="/admin/settings/program-course-term" class="collection-item">
 					Program Course Term
 				</a>
-				<a href="/admin/answer-types" class="list-group-item">
+				<a href="/admin/settings/answer" class="collection-item">
 					Answer Types
 				</a>
-				<a href="/admin/fixed-questions" class="list-group-item">
+				<a href="/admin/settings/fixed-question" class="collection-item">
 					Fixed Questions
 				</a>
-				<a href="/admin/fixed-question-options" class="list-group-item">
-					Fixed Questions Options
-				</a>
-				<a href="/admin/custom-questions" class="list-group-item">
+				<a href="/admin/settings/custom-question" class="collection-item">
 					Custom Questions
 				</a>
-				<a href="/admin/logout" class="list-group-item">
+				<a href="/admin/settings/fixed-question-option" class="collection-item">
+					Fixed Questions Options
+				</a>
+				<a href="/admin/logout" class="collection-item">
 					Logout
 				</a>
 			</div>
 		</div>
-		<div class="col-md-9">
-			<div class="panels panel-defaults">
-				<div class="panel-bodys">
+		<div class="col m9">
+			<div class="card">
+				<div class="card-content">
 					@yield('admin-content')
 				</div>
 			</div>

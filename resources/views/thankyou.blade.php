@@ -1,6 +1,6 @@
 @extends('base-layout')
 @section('content')
-  <div class="text-center thankyou-container" layout="column" layout-align="center center">
+  <div class="center-align thankyou-container">
     <h1>
       <i class="material-icons">done</i>
     </h1>
