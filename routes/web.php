@@ -17,8 +17,8 @@ Route::post('/', ['uses' => 'HomeController@checkToken']);
 Route::get('/course-selection', ['uses' => 'CourseSelectionController@index']);
 Route::post('/course-selection', ['uses' => 'CourseSelectionController@post']);
 
-Route::get('/feedback', ['uses' => 'FeedbackController@index']);
-Route::post('/feedback', ['uses' => 'FeedbackController@create']);
+Route::get('/feedback', ['uses' => 'StudentFeedbackController@index']);
+Route::post('/feedback', ['uses' => 'StudentFeedbackController@create']);
 
 Route::get('/rating', ['uses' => 'RatingController@index']);
 Route::post('/rating', ['uses' => 'RatingController@create']);
@@ -49,13 +49,17 @@ Route::group(['prefix' => 'admin'], function() {
 // ADMIN routes: /api/admin/settings/
 Route::group(['prefix' => 'admin'], function () {
 	Route::group(['prefix' => 'settings'], function () {
+			Route::get('feedback', ['uses' => 'AdminController@getFeedbackView']);
+			Route::get('program-course-term', ['uses' => 'AdminController@getProgramCourseTermView']);
+			Route::get('fixed-question', ['uses' => 'AdminController@getFixedQuestionsView']);
+			Route::get('custom-question', ['uses' => 'AdminController@getCustomQuestionsView']);
+
+			// Resource Routes
 		Route::resource('import','ImportController');
-		Route::resource('feedback','FeedbackMasterController');
-		Route::resource('metadata','FeedbackMetadataController');
-		Route::resource('program-course-term','ProgramCourseTermController');
-		Route::resource('question','QuestionMasterController');
-		Route::resource('fixed-question','FixedQuestionController');
-		Route::resource('custom-question','CustomQuestionController');
+//		Route::resource('feedback','FeedbackController');
+//		Route::resource('program-course-term','ProgramCourseTermController');
+//		Route::resource('fixed-question','FixedQuestionController');
+//		Route::resource('custom-question','CustomQuestionController');
 		Route::resource('user','UserMasterController');
 });
 

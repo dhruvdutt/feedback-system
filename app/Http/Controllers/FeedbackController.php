@@ -6,66 +6,49 @@ use Illuminate\Http\Request;
 
 class FeedbackController extends Controller
 {
-		public function index(Request $request)
-		{
-				$coreCourses = $request->session()->pull('coreCourses');
-				if ($request->session()->has('electiveCourses'))
-						$electiveCourses = $request->session()->pull('electiveCourses');
-				$fixedQuestions = $request->session()->pull('fixedQuestions');
-				$fixedQuestionsOptions = $request->session()->pull('fixedQuestionsOptions');
-				$customQuestions = $request->session()->pull('customQuestions');
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        return view('admin.feedback.base')->with([
+          'recent'=> [
+            'name' => 'Autumn',
+            'course' => 'Computer Networks',
+            'start_date' => '20/4/2017',
+            'end_date' => '20/4/2017',
+            'enabled' => false
+          ]
+        ]);
+    }
 
-				if (!isset($electiveCourses))
-						$electiveCourses = array();
-
-//      return response()->json([
-//						  'coreCourses' => $coreCourses[0],
-//						  'electiveCourses' => $electiveCourses[0],
-//						  'fixedQuestions' => $fixedQuestions[0],
-//						  'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-//						  'customQuestions' => $customQuestions[0]
-//				  ]);
-
-		    return view('feedback')->with([
-				    'coreCourses' => $coreCourses[0],
-				    'electiveCourses' => $electiveCourses[0],
-				    'fixedQuestions' => $fixedQuestions[0],
-				    'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-				    'customQuestions' => $customQuestions[0]
-		    ]);
+    public function addNewFeedback(Request $request)
+    {
 
     }
 
-		public function create(Request $request)
-		{
-				// key: 'courseId-questionId' => optionId
-				// $request->get('COURSEID - QUESTION ID')
-				$coreCourses = $request->session()->pull('coreCourses')[0];
-				if ($request->session()->has('electiveCourses')) {
-						$electiveCourses = $request->session()->pull('electiveCourses')[0];
-						$courses = array_merge($coreCourses, $electiveCourses);
-				} else {
-						$courses = $coreCourses;
-				}
+    public function store(Request $request)
+    {
+        //
+    }
 
-				$fixedQuestions = $request->session()->pull('fixedQuestions')[0];
-				$customQuestions = $request->session()->pull('customQuestions')[0];
+    public function show($id)
+    {
+        //
+    }
 
-				$fixedQuestions = (array) json_decode(json_encode($fixedQuestions), true);
-				$customQuestions = (array) json_decode(json_encode($customQuestions), true);
+    public function edit($id)
+    {
+        //
+    }
 
-				$question = array_merge($fixedQuestions, $customQuestions);
+    public function update(Request $request, $id)
+    {
+        //
+    }
 
-				$data = $request->get('IT612-1');
-
-				return response()->json([
-						gettype($question),
-						($question)
-				]);
-		}
-
-		public function thankyou()
-		{
-				return view('thankyou');
-		}
+    public function destroy($id)
+    {
+        //
+    }
 }

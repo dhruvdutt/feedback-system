@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ProgramMaster;
-use App\CourseMaster;
+use App\Course;
 use App\ProgramCourseTerm;
-use App\QuestionMaster;
-use App\RadioOptionsMaster;
-use App\AnswerMaster;
+use App\QuestionMeta;
+use App\Option;
+use App\AnswerType;
 
 class CourseSelectionController extends Controller
 {
@@ -55,7 +54,7 @@ class CourseSelectionController extends Controller
 
 		  $fixedQuestions = $this->getFixedQuestions();
 
-		  $fixedQuestionsOptions = RadioOptionsMaster::whereNull('question_id')->get();
+		  $fixedQuestionsOptions = Option::whereNull('question_id')->get();
 
 		  if (sizeof($electiveCoursesIds) > 0)
 		  		$mergedCourses = array_merge($coreCourses, $electiveCourses);
@@ -84,7 +83,7 @@ class CourseSelectionController extends Controller
 
   private function getCustomQuestionsOptions($question) {
 
-				  return $options = RadioOptionsMaster::where('question_id', $question->question_id)
+				  return $options = Option::where('question_id', $question->question_id)
 						                                    ->get();
 
   }
@@ -94,7 +93,7 @@ class CourseSelectionController extends Controller
   		$questions = array();
 
 		  foreach ($courses as $course) {
-				  $courseQuestions = QuestionMaster::where('course_id', $course->course_id)
+				  $courseQuestions = QuestionMeta::where('course_id', $course->course_id)
 																		              ->where('term_id', $term_id)
 																		              ->get();
 				  foreach ($courseQuestions as $question) {
@@ -111,12 +110,12 @@ class CourseSelectionController extends Controller
   private function getFixedQuestions() {
 
 		  // @TODO  Get & Store Fixed Questions Course Wise | Lab / Lecture / Tutorial
-		  $questions = QuestionMaster::whereNull('course_id')
+		  $questions = QuestionMeta::whereNull('course_id')
 																														 ->whereNull('term_id')
 																														 ->get();
 
 		  foreach ($questions as $question) {
-				  $answer = AnswerMaster::where('answer_type_id', $question->answer_type_id)->first();
+				  $answer = AnswerType::where('answer_type_id', $question->answer_type_id)->first();
 				  $question->answer_type = $answer->answer_type;
 		  }
 
@@ -141,7 +140,7 @@ class CourseSelectionController extends Controller
 
 		private function getCoreCourses($program_id, $term_id) {
 
-				$allCoreCourses = CourseMaster::where('course_type', 'Core')->get();
+				$allCoreCourses = Course::where('course_type', 'Core')->get();
 				$coreCourses = array();
 
 				foreach ($allCoreCourses as $course) {
@@ -158,7 +157,7 @@ class CourseSelectionController extends Controller
 
 		private function getElectiveCourses($program_id, $term_id) {
 
-				$allElectiveCourses = CourseMaster::where('course_type', 'Elective')->get();
+				$allElectiveCourses = Course::where('course_type', 'Elective')->get();
 				$electiveCourses = array();
 
 				foreach ($allElectiveCourses as $course) {

@@ -13,7 +13,7 @@ class CustomQuestionController extends Controller
      */
     public function index()
     {
-      return view('admin.custom-question.base');
+
     }
 
     /**

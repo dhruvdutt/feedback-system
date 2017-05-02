@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ProgramCourseTerm;
-use App\ProgramMaster;
-use App\CourseMaster;
-use App\TermYearMaster;
+use App\Program;
+use App\Course;
+use App\TermYear;
 use Illuminate\Http\Request;
 use App\Response;
 
@@ -19,10 +19,6 @@ class ProgramCourseTermController extends Controller
      */
     public function index()
     {
-		    $list = ProgramCourseTerm::all();
-//      return response()->json($list);
-
-		    return view('admin.programCourse.base', ['list' => $list]);
 
     }
 
@@ -33,9 +29,9 @@ class ProgramCourseTermController extends Controller
      */
     public function create()
     {
-		      $programs = ProgramMaster::all();
-        $courses = CourseMaster::all();
-        $terms = TermYearMaster::all();
+		      $programs = Program::all();
+        $courses = Course::all();
+        $terms = TermYear::all();
 
 		      return view('admin.programCourse.add', [
 		      		'programs' => $programs,

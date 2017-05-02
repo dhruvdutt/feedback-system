@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\ProgramCourseTerm;
 use Illuminate\Http\Request;
 use \Firebase\JWT\JWT;
 
@@ -45,7 +46,6 @@ class AdminController extends Controller
 
 		  $jwt = JWT::encode($token, $key);
 
-
 				$key="priya123";
 		  $decoded = JWT::decode($jwt, $key, array('HS256'));
 		  $decoded_array = (array) $decoded;
@@ -55,4 +55,30 @@ class AdminController extends Controller
     		'$decoded_array' => $decoded_array,
     ]);
   }
+
+		public function getFeedbackView()
+		{
+				return view('admin.feedback.base')->with([
+						'recent'=> [
+								'name' => 'Autumn',
+								'course' => 'Computer Networks',
+								'start_date' => '20/4/2017',
+								'end_date' => '20/4/2017',
+								'enabled' => false
+						]
+				]);
+		}
+
+		public function getProgramCourseTermView() {
+				return view('admin.programCourse.base');
+		}
+
+		public function getFixedQuestionsView() {
+				return view('admin.fixed-question.base');
+		}
+
+		public function getCustomQuestionsView() {
+				return view('admin.custom-question.base');
+		}
+
 }

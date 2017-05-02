@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\QuestionMaster;
-use App\AnswerMaster;
+use App\QuestionMeta;
+use App\AnswerType;
 
 class FixedQuestionController extends Controller
 {
@@ -15,10 +15,10 @@ class FixedQuestionController extends Controller
      */
     public function index()
     {
-      // $answers = AnswerMaster::all();
-      // $questions = QuestionMaster::whereNull('course_id')->whereNull('term_id')->get();
+      // $answers = AnswerType::all();
+      // $questions = QuestionMeta::whereNull('course_id')->whereNull('term_id')->get();
       
-      return view('admin.fixed-question.base');
+
     }
 
     /**
