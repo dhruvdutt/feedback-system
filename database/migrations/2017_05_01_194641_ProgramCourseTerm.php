@@ -15,9 +15,9 @@ class ProgramCourseTerm extends Migration
     {
       Schema::create('program_course_term',function(Blueprint $table){
         $table->increments('program_course_term_id');
-        $table->integer('program_id')->unsigned();
-        $table->integer('course_id')->unsigned();
-        $table->integer('term_id')->unsigned();
+        $table->string('program_id');
+        $table->string('course_id');
+        $table->integer('term_id');
 
         $table->foreign('program_id')->references('program_id')->on('program');
         $table->foreign('course_id')->references('course_id')->on('course');

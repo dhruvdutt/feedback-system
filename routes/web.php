@@ -23,6 +23,8 @@ Route::post('/feedback', ['uses' => 'FeedbackController@create']);
 Route::get('/rating', ['uses' => 'RatingController@index']);
 Route::post('/rating', ['uses' => 'RatingController@create']);
 
+Route::get('/tokens', ['uses' => 'AdminController@generateTokens']);
+
 /*
 For all the routes listed below following conventions will be followed using first term as an example
 
