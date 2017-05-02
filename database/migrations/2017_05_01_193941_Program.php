@@ -16,8 +16,10 @@ class Program extends Migration
       Schema::create('program',function(Blueprint $table){
         $table->engine = 'InnoDB';
 
-        $table->increments('program_id');
+        $table->string('program_id')->index();
         $table->string('program_name');
+
+        $table->primary('program_id');
       });
     }
 

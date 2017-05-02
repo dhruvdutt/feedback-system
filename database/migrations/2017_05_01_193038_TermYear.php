@@ -16,9 +16,11 @@ class TermYear extends Migration
         Schema::create('term_year',function(Blueprint $table){
           $table->engine = 'InnoDB';
 
-          $table->increments('term_id');
+          $table->integer('term_id')->index();
           $table->string('term_name');
           $table->string('year_name');
+
+          $table->primary('term_id');
         });
     }
 

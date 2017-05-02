@@ -16,7 +16,7 @@ class QuestionLink extends Migration
         Schema::create('question_link',function(Blueprint $table){
           $table->integer('question_id')->index();
           $table->integer('i_question_id')->index();
-          $table->integer('course_id')->unsigned()->nullable();
+          $table->string('course_id')->nullable();
           $table->integer('feedback_id')->nullable();
 
           $table->foreign('course_id')->references('course_id')->on('course');
