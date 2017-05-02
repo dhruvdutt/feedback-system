@@ -13,32 +13,32 @@ class FeedbackMetaDataSeeder extends Seeder
     {
       DB::table('feedback_meta_data')->insert([
         'feedback_id' => '1',
-        'feedback_name' => '',
+        'feedback_name' => 'Feedback 1',
         'created_by' => 'admin123',
-        'start_flag' => 'true',
-        'active_flag' => 'flase',
-        'start_date' => '22/4/2017',
-        'end_date' => '28/4/2017',
+        'start_flag' => true,
+        'active_flag' => false,
+        'start_date' => '2017-4-22',
+        'end_date' => '2017-4-28',
     ]);
 
       DB::table('feedback_meta_data')->insert([
         'feedback_id' => '2',
-        'feedback_name' => '',
+        'feedback_name' => 'Feedback 2',
         'created_by' => 'admin123',
-        'start_flag' => 'true',
-        'active_flag' => 'true',
-        'start_date' => '1/5/2017',
-        'end_date' => '5/5/2017',
+        'start_flag' => true,
+        'active_flag' => true,
+        'start_date' => '2017-5-1',
+        'end_date' => '2017-5-5',
     ]);
 
     DB::table('feedback_meta_data')->insert([
       'feedback_id' => '3',
-      'feedback_name' => '',
+      'feedback_name' => 'Feedback 3',
       'created_by' => 'admin123',
-      'start_flag' => 'true',
-      'active_flag' => 'true',
-      'start_date' => '6/5/2017',
-      'end_date' => '7/5/2017',
+      'start_flag' => true,
+      'active_flag' => true,
+      'start_date' => '2017-5-6',
+      'end_date' => '2017-5-7',
   ]);
 
 
