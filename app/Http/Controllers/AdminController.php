@@ -15,7 +15,7 @@ class AdminController extends Controller
 
   public function login(Request $request)
   {
-    return redirect('/admin/dashboard');
+    return redirect('/admin/settings/feedback');
   }
 
   public function terms(Request $request)

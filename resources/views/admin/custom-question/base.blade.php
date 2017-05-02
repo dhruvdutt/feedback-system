@@ -1,6 +1,6 @@
 @extends('admin.base')
 @section('admin-content')
-<div class="right-align" ng-controller="TermController as vm">
+<div class="right-align">
 	 <button data-target="add-custom-question-modal" class="btn">Add</button>
 </div>
 <div>

@@ -10,7 +10,10 @@ angular.module('app', [
   'app.home',
   'app.admin'
 
-]);
+], function($interpolateProvider) {
+      $interpolateProvider.startSymbol('<%');
+      $interpolateProvider.endSymbol('%>');
+});
 
 // App modules
 require('./modules/home/home.config');

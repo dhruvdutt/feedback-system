@@ -36,15 +36,10 @@ class ImportController extends Controller
      */
     public function store(Request $request)
     {
+      return $request->input('file');
     		  $data = array();
 				    try {
-						    Excel::load($request->input('file'), function ($reader) {
-
-								    foreach ($reader->toArray() as $row) {
-										    //array_push($data, $row);
-										    dd ($row);
-								    }
-						    });
+              $data = Excel::load($request->input('file'), function ($reader) {})->get();
 				    } catch (\Exception $e) {
 //						    array_push($data, 'Errors');
 						    echo $e->getMessage();
