@@ -16,7 +16,7 @@ class User extends Migration
       Schema::create('user',function(Blueprint $table){
         $table->string('username')->index();
         $table->string('name');
-        $table->string('admin_type');
+        $table->string('role');
         $table->string('password');
         $table->string('email');
 
