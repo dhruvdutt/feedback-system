@@ -15,11 +15,10 @@ class Attendance extends Migration
     {
       Schema::create('attendance',function(Blueprint $table){
         $table->integer('student_feedback_id')->index();
-        $table->integer('student_id')->index();
+        $table->integer('student_id');
         $table->integer('feedback_id')->index();
         $table->boolean('attendance');
 
-        $table->foreign('student_id')->references('student_id')->on('student');
         $table->foreign('feedback_id')->references('feedback_id')->on('feedback_meta_data');
         $table->primary('student_feedback_id');
       });
