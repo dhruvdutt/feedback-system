@@ -11,19 +11,19 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('user_master')->insert([
-          'username' => 'dineshprajapati',
-          'name' => 'Dinesh Prajapati',
-          'password'=> md5('123456'),
-          'type' => 'Admin',
-          'email'=>'dinesh@gmail.com',
-      ]);
-      DB::table('user_master')->insert([
-          'username' => 'hiteshprajapati',
-          'name' => 'Hitesh Prajapati',
-          'password'=> md5('123456'),
-          'type' => 'Super Admin',
-          'email'=>'hitesh@gmail.com',
-      ]);
+      DB::table('user')->insert([
+        'username' => 'admin123',
+        'name' => 'dinesh prajapati',
+        'admin_type' => 'admin',
+        'password' => 'admin123',
+        'email' => '123@gmail.com',
+    ]);
+    DB::table('user')->insert([
+      'username' => 'superadmin123',
+      'name' => 'dean',
+      'admin_type' => 'super admin',
+      'password' => 'superadmin123',
+      'email' => '1234@gmail.com',
+   ]);
     }
 }
