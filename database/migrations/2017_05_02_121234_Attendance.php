@@ -14,14 +14,12 @@ class Attendance extends Migration
     public function up()
     {
       Schema::create('attendance',function(Blueprint $table){
-        $table->integer('student_feedback_id')->index();
-        $table->integer('student_id')->index();
-        $table->integer('feedback_id')->index();
+        $table->increments('student_feedback_id');
+        $table->integer('student_id');
+        $table->integer('feedback_id')->unsigned()->index();
         $table->boolean('attendance');
 
-        $table->foreign('student_id')->references('student_id')->on('student');
         $table->foreign('feedback_id')->references('feedback_id')->on('feedback_meta_data');
-        $table->primary('student_feedback_id');
       });
     }
 

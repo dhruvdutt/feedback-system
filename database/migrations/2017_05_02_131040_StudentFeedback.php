@@ -14,15 +14,14 @@ class StudentFeedback extends Migration
     public function up()
     {
       Schema::create('student_feedback',function(Blueprint $table){
-        $table->integer('pct_feedback_serial_question_id')->index();
-        $table->integer('pct_feedback_serial_id')->index();
-        $table->integer('question_id')->index();
-        $table->integer('option_id')->nullable();
+        $table->increments('pct_feedback_serial_question_id');
+        $table->integer('pct_feedback_serial_id')->unsigned()->index();
+        $table->integer('question_id')->unsigned()->index();
+        $table->integer('option_id')->unsigned()->nullable();
 
         $table->foreign('pct_feedback_serial_id')->references('pct_feedback_serial_id')->on('feedback');
         $table->foreign('question_id')->references('question_id')->on('question_link');
         $table->foreign('option_id')->references('option_id')->on('option');
-        $table->primary('pct_feedback_serial_question_id');
       });
     }
 

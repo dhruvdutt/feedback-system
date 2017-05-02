@@ -14,12 +14,11 @@ class Option extends Migration
     public function up()
     {
       Schema::create('option',function(Blueprint $table){
-        $table->integer('option_id')->index();
-        $table->integer('i_question_id')->index();
+        $table->increments('option_id');
+        $table->integer('i_question_id')->unsigned()->nullable()->index();
         $table->string('option');
 
         $table->foreign('i_question_id')->references('i_question_id')->on('question_meta');
-        $table->primary('option_id');
       });
     }
 

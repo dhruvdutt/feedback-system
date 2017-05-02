@@ -14,13 +14,13 @@ class Student extends Migration
     public function up()
     {
         Schema::create('student',function(Blueprint $table){
+          $table->increments('student_program_id');
           $table->integer('student_id')->index();
           $table->string('program_id')->index();
           $table->string('course_id')->index();
 
           $table->foreign('program_id')->references('program_id')->on('program');
           $table->foreign('course_id')->references('course_id')->on('course');
-          $table->primary('student_id');
         });
     }
 

@@ -11,13 +11,13 @@ class AnswerSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('answer_master')->insert([
-          'answer_type_id' => '1',
-          'answer_type' => 'Radio',
-      ]);
-      DB::table('answer_master')->insert([
-          'answer_type_id' => '2',
-          'answer_type' => 'Note',
-      ]);
+      DB::table('answer_type')->insert([
+        'answer_type' => 'radio',
+    ]);
+
+
+    DB::table('answer_type')->insert([
+      'answer_type' => 'note',
+  ]);
     }
 }
