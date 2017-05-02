@@ -14,7 +14,7 @@ class FeedbackMetaData extends Migration
     public function up()
     {
       Schema::create('feedback_meta_data',function(Blueprint $table){
-        $table->integer('feedback_id')->index();
+        $table->increments('feedback_id');
         $table->string('feedback_name');
         $table->string('created_by')->index();
         $table->boolean('start_flag');
@@ -23,7 +23,6 @@ class FeedbackMetaData extends Migration
         $table->date('end_date');
 
         $table->foreign('created_by')->references('username')->on('user');
-        $table->primary('feedback_id');
       });
     }
 
@@ -34,6 +33,6 @@ class FeedbackMetaData extends Migration
      */
     public function down()
     {
-      Schema::dropIfExists(feedback_meta_data);
+      Schema::dropIfExists('feedback_meta_data');
     }
 }

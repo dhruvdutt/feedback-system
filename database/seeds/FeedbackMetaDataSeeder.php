@@ -12,7 +12,6 @@ class FeedbackMetaDataSeeder extends Seeder
     public function run()
     {
       DB::table('feedback_meta_data')->insert([
-        'feedback_id' => '1',
         'feedback_name' => 'Feedback 1',
         'created_by' => 'admin123',
         'start_flag' => true,
@@ -22,7 +21,6 @@ class FeedbackMetaDataSeeder extends Seeder
     ]);
 
       DB::table('feedback_meta_data')->insert([
-        'feedback_id' => '2',
         'feedback_name' => 'Feedback 2',
         'created_by' => 'admin123',
         'start_flag' => true,
@@ -32,7 +30,6 @@ class FeedbackMetaDataSeeder extends Seeder
     ]);
 
     DB::table('feedback_meta_data')->insert([
-      'feedback_id' => '3',
       'feedback_name' => 'Feedback 3',
       'created_by' => 'admin123',
       'start_flag' => true,
