@@ -12,6 +12,10 @@ body {
   background: #2A3A3F !important;
 }
 
+input[type=text]:disabled {
+  color: #000000 !important;
+}
+
 .flex-center-container {
   height: 100vh;
   display: flex;
@@ -21,4 +25,8 @@ body {
 
 .full-width-button {
   width: 100%;
+}
+
+.container {
+  height: 100vh;
 }

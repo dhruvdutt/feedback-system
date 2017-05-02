@@ -32,6 +32,7 @@
 		<link rel="stylesheet" href="materialize.min.css">
     <script src="{{mix('js/manifest.js')}}" charset="utf-8"></script>
     <script src="{{mix('js/vendor.js')}}" charset="utf-8"></script>
+		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script> -->
     <script src="{{mix('js/app.js')}}" charset="utf-8"></script>
 		<script src="materialize.min.js" charset="utf-8"></script>
 </html>

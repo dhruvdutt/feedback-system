@@ -1,5 +1,7 @@
 angular.module('app.admin', [
-  'app.admin.terms'
+  'app.admin.feedback',
+  'app.admin.fixedQuestion'
 ]);
 
-require('./terms/terms.config');
+require('./feedback/feedback.config');
+require('./fixed-question/fixed-question.config');
