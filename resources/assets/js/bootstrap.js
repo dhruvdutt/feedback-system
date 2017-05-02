@@ -20,4 +20,5 @@ $(document).ready(function(){
   $('.datepicker').pickadate({
    selectMonths: true
  });
+ $('.collapsible').collapsible();
 });

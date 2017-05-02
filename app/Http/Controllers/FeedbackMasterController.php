@@ -13,7 +13,15 @@ class FeedbackMasterController extends Controller
      */
     public function index()
     {
-        return view('admin.feedback.base');
+        return view('admin.feedback.base')->with([
+          'recent'=> [
+            'name' => 'Autumn',
+            'course' => 'Computer Networks',
+            'start_date' => '20/4/2017',
+            'end_date' => '20/4/2017',
+            'enabled' => false
+          ]
+        ]);
     }
 
     /**
