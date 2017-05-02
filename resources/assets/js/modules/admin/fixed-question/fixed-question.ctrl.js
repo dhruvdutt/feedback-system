@@ -8,8 +8,7 @@ function controller() {
 
   var vm = this;
 
-  vm.toggleEditable = toggleEditable;
-  vm.toggleAddQuestion = toggleAddQuestion;
+  vm.setQuestionModel = setQuestionModel;
   vm.addUpdateFeedback = addUpdateFeedback;
 
   _setDefaults();
@@ -17,12 +16,8 @@ function controller() {
 
 // ////////////////////////////////////////
 
-  function toggleEditable(question) {
-    question.isEditable = !question.isEditable;
-  }
-
-  function toggleAddQuestion() {
-    vm.addQuestionEnabled = !vm.addQuestionEnabled;
+  function setQuestionModel(question) {
+    vm.question = question;
   }
 
   function addUpdateFeedback() {
@@ -38,7 +33,7 @@ function controller() {
       {
         id: 1,
         question: "What is rating for the subject?",
-        answerType: "Radio",
+        answerType: "radio",
         lab: false,
         lecture: true,
         tutorial: true,

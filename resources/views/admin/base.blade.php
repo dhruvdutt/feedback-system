@@ -5,10 +5,12 @@
 		<div class="col m2">
 			<ul id="slide-out" class="side-nav fixed">
 				<li>
-					<a href="/admin/dashboard" class="collection-item">Home</a>
+					<a href="/admin/settings/feedback" class="collection-item">Feedback</a>
 				</li>
 				<li>
-					<a href="/admin/settings/feedback" class="collection-item">Feedback</a>
+					<a href="/admin/settings/import" class="collection-item">
+						Importing Data
+					</a>
 				</li>
 				<li>
 					<a href="/admin/settings/program-course-term" class="collection-item">Program Course Term</a>
