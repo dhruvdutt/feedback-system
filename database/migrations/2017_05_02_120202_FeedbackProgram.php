@@ -16,7 +16,7 @@ class FeedbackProgram extends Migration
         Schema::create('feedback_program',function(Blueprint $table){
           $table->integer('feedback_program_id')->index();
           $table->integer('feedback_id')->index();
-          $table->integer('program_id')->unsigned()->index();
+          $table->string('program_id')->index();
           $table->date('start_date');
           $table->date('end_date');
 

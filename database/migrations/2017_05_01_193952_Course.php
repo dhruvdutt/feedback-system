@@ -16,12 +16,14 @@ class Course extends Migration
       Schema::create('course',function(Blueprint $table){
         $table->engine = 'InnoDB';
 
-        $table->increments('course_id');
+        $table->string('course_id')->index();
         $table->string('course_name');
         $table->string('course_type');
         $table->decimal('course_lecture',5,2);
         $table->decimal('course_lab',5,2);
         $table->decimal('course_tutorial',5,2);
+
+        $table->primary('course_id');
       });
     }
 
