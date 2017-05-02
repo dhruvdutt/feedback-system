@@ -11,53 +11,59 @@ class CourseSeeder extends Seeder
      */
     public function run()
     {
-      DB::table('course_master')->insert([
-          'course_id' => 'IT619',
-          'course_name' => 'Algorithms',
-          'course_type' => 'Core',
-          'lecture_grade' => '4',
-          'lab_grade' => '0',
-          'tutorial_grade' => '4',
-      ]);
-      DB::table('course_master')->insert([
-          'course_id' => 'IT617',
-          'course_name' => 'Operating Systems',
-          'course_type' => 'Core',
-          'lecture_grade' => '4',
-          'lab_grade' => '4',
-          'tutorial_grade' => '0',
-      ]);
-      DB::table('course_master')->insert([
-          'course_id' => 'IT612',
-          'course_name' => 'Design Of Software Systems',
-          'course_type' => 'Core',
-          'lecture_grade' => '6',
-          'lab_grade' => '4',
-          'tutorial_grade' => '0',
-      ]);
-      DB::table('course_master')->insert([
-          'course_id' => 'IT618',
-          'course_name' => 'Computer Networks',
-          'course_type' => 'Core',
-          'lecture_grade' => '4',
-          'lab_grade' => '4',
-          'tutorial_grade' => '0',
-      ]);
-      DB::table('course_master')->insert([
-          'course_id' => 'IT616',
-          'course_name' => 'Cloud Computing',
-          'course_type' => 'Elective',
-          'lecture_grade' => '0',
-          'lab_grade' => '4',
-          'tutorial_grade' => '0',
-      ]);
-      DB::table('course_master')->insert([
-          'course_id' => 'IT999',
-          'course_name' => 'Machine Learning',
-          'course_type' => 'Elective',
-          'lecture_grade' => '2',
-          'lab_grade' => '4',
-          'tutorial_grade' => '2',
-      ]);
+      DB::table('course')->insert([
+        'course_id' => 'it619',
+        'course_name' => 'design of software system',
+        'course_type'=> 'core',
+        'course_lecture'=> '3.0',
+        'course_lab' => '1.0',
+        'course_tutorial' => '0.0',
+    ]);
+
+      DB::table('course')->insert([
+        'course_id' => 'it618',
+        'course_name' => 'enterprise computing',
+        'course_type'=> 'core',
+        'course_lecture'=> '3.0',
+        'course_lab' => '2.0',
+        'course_tutorial' => '0.0',
+    ]);
+
+     DB::table('course')->insert([
+      'course_id' => 'it694',
+      'course_name' => 'computer network',
+      'course_type'=> 'core',
+      'course_lecture'=> '3.0',
+      'course_lab' => '1.0',
+      'course_tutorial' => '0.0',
+    ]);
+
+     DB::table('course')->insert([
+      'course_id' => 'it616',
+      'course_name' => 'analysis and design of algorithm',
+      'course_type'=> 'core',
+      'course_lecture'=> '3.0',
+      'course_lab' => '0.0',
+      'course_tutorial' => '1.0',
+    ]);
+
+     DB::table('course')->insert([
+      'course_id' => 'it617',
+      'course_name' => 'operating system',
+      'course_type'=> 'core',
+      'course_lecture'=> '3.0',
+      'course_lab' => '1.0',
+      'course_tutorial' => '0.0',
+   ]);
+
+    DB::table('course')->insert([
+      'course_id' => 'hm002',
+      'course_name' => 'north indian classical music 2',
+      'course_type'=> 'elective',
+      'course_lecture'=> '0.0',
+      'course_lab' => '2.0',
+      'course_tutorial' => '0.0',
+    ]);
+
     }
 }
