@@ -14,16 +14,15 @@ class QuestionMeta extends Migration
     public function up()
     {
         Schema::create('question_meta',function(Blueprint $table){
-          $table->integer('i_question_id')->index();
+          $table->increments('i_question_id');
           $table->string('type');
           $table->string('question');
-          $table->integer('answer_type_id')->index();
+          $table->integer('answer_type_id')->unsigned()->index();
           $table->boolean('lecture');
           $table->boolean('lab');
           $table->boolean('tutorial');
 
           $table->foreign('answer_type_id')->references('answer_type_id')->on('answer_type');
-          $table->primary('i_question_id');
         });
     }
 

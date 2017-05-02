@@ -14,10 +14,8 @@ class AnswerType extends Migration
     public function up()
     {
       Schema::create('answer_type',function(Blueprint $table){
-        $table->integer('answer_type_id')->index();
+        $table->increments('answer_type_id');
         $table->string('answer_type');
-
-        $table->primary('answer_type_id');
       });
     }
 
