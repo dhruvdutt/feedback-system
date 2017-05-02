@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class TermYearMaster extends Migration
+class AnswerType extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class TermYearMaster extends Migration
      */
     public function up()
     {
-      Schema::create('term_year_master', function(Blueprint $table) {
-        $table->increments('term_id');
-        $table->string('term_name');
-        $table->string('year_name');
+      Schema::create('answer_type',function(Blueprint $table){
+        $table->integer('answer_type_id')->index();
+        $table->string('answer_type');
+
+        $table->primary('answer_type_id');
       });
     }
 
@@ -27,6 +28,6 @@ class TermYearMaster extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('term_year_master');
+      Schema::dropIfExists('answer_type');
     }
 }

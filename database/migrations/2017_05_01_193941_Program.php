@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class UserMaster extends Migration
+class Program extends Migration
 {
     /**
      * Run the migrations.
@@ -13,14 +13,11 @@ class UserMaster extends Migration
      */
     public function up()
     {
-      Schema::create('user_master', function(Blueprint $table) {
-        $table->string('username');
-        $table->string('name');
-        $table->string('type');
-        $table->string('password');
-        $table->string('email');
+      Schema::create('program',function(Blueprint $table){
+        $table->engine = 'InnoDB';
 
-        $table->primary('username');
+        $table->increments('program_id');
+        $table->string('program_name');
       });
     }
 
@@ -31,6 +28,6 @@ class UserMaster extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('user_master');
+        Schema::dropIfExists('program');
     }
 }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ProgramMaster extends Migration
+class User extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class ProgramMaster extends Migration
      */
     public function up()
     {
-        Schema::create('program_master', function(Blueprint $table) {
-          $table->string('program_id')->index();
-          $table->string('program_name');
+      Schema::create('user',function(Blueprint $table){
+        $table->string('username')->index();
+        $table->string('name');
+        $table->string('admin_type');
+        $table->string('password');
+        $table->string('email');
 
-          $table->primary('program_id');
-        });
+        $table->primary('username');
+      });
     }
 
     /**
@@ -28,6 +31,6 @@ class ProgramMaster extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('program_master');
+        Schema::dropIfExists('user');
     }
 }

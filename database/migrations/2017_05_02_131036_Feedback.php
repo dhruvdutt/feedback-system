@@ -13,12 +13,15 @@ class Feedback extends Migration
      */
     public function up()
     {
-      Schema::create('feedback', function(Blueprint $table) {
-        $table->increments('program_course_term_serial_id');
-        $table->unsignedInteger('program_course_term_id');
+      Schema::create('feedback',function(Blueprint $table){
+        $table->integer('pct_feedback_serial_id')->index();
+        $table->integer('program_course_term_id')->unsigned()->index();
+        $table->integer('feedback_id')->index();
         $table->integer('serial_no');
 
         $table->foreign('program_course_term_id')->references('program_course_term_id')->on('program_course_term');
+        $table->foreign('feedback_id')->references('feedback_id')->on('feedback_meta_data');
+        $table->primary('pct_feedback_serial_id');
       });
     }
 
@@ -29,6 +32,6 @@ class Feedback extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('feedback');
+      Schema::dropIfExists('feedback');
     }
 }
