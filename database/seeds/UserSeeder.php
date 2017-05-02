@@ -14,14 +14,14 @@ class UserSeeder extends Seeder
       DB::table('user')->insert([
         'username' => 'admin123',
         'name' => 'dinesh prajapati',
-        'admin_type' => 'admin',
+        'role' => 'admin',
         'password' => 'admin123',
         'email' => '123@gmail.com',
     ]);
     DB::table('user')->insert([
       'username' => 'superadmin123',
       'name' => 'dean',
-      'admin_type' => 'super admin',
+      'role' => 'super admin',
       'password' => 'superadmin123',
       'email' => '1234@gmail.com',
    ]);
