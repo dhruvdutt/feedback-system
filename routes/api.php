@@ -30,4 +30,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::group(['prefix' => 'admin'], function () {
 		Route::resource('feedback','FeedbackController');
 		Route::post('feedback/start', ['uses' => 'FeedbackController@start']);
+		Route::resource('questions/fixed','FixedQuestionController');
+		Route::resource('questions/custom','FixedQuestionController');
 });

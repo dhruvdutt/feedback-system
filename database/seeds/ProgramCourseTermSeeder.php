@@ -40,5 +40,6 @@ class ProgramCourseTermSeeder extends Seeder
 						'course_id' => 'it694',
 						'term_id' => '54',
 				]);
+
 		}
 }

@@ -11,19 +11,21 @@ class UserSeeder extends Seeder
 			*/
 		public function run()
 		{
+
 				DB::table('user')->insert([
-						'username' => 'admin123',
-						'name' => 'dinesh prajapati',
+						'username' => 'admin',
+						'name' => 'Dinesh Prajapati',
 						'role' => 'admin',
-						'password' => 'admin123',
-						'email' => '123@gmail.com',
+						'password' => 'admin',
+						'email' => 'admin@daiict.ac.in',
 				]);
+
 				DB::table('user')->insert([
-						'username' => 'superadmin123',
-						'name' => 'dean',
-						'role' => 'super admin',
-						'password' => 'superadmin123',
-						'email' => '1234@gmail.com',
+						'username' => 'superadmin',
+						'name' => 'Dean',
+						'role' => 'superadmin',
+						'password' => 'superadmin',
+						'email' => 'superadmin@daiict.ac.in',
 				]);
 		}
 }

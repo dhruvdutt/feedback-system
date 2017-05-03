@@ -11,19 +11,25 @@ class TermYearSeeder extends Seeder
 			*/
 		public function run()
 		{
+
 				DB::table('term_year')->insert([
 						'term_id' => '54',
 						'term_name' => 'Summer',
+						'year_id' => '15',
 						'year_name' => '2016-17',
 				]);
+
 				DB::table('term_year')->insert([
 						'term_id' => '55',
 						'term_name' => 'Winter',
+						'year_id' => '15',
 						'year_name' => '2016-17',
 				]);
+
 				DB::table('term_year')->insert([
 						'term_id' => '56',
 						'term_name' => 'Autumn',
+						'year_id' => '15',
 						'year_name' => '2016-17',
 				]);
 		}

@@ -11,13 +11,15 @@ class ProgramSeeder extends Seeder
 			*/
 		public function run()
 		{
+
 				DB::table('program')->insert([
 						'program_id' => '12',
-						'program_name' => 'msc.it',
+						'program_name' => 'M.Sc.IT',
 				]);
+
 				DB::table('program')->insert([
 						'program_id' => '01',
-						'program_name' => 'b.tech',
+						'program_name' => 'B.Tech',
 				]);
 		}
 }

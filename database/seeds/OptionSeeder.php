@@ -11,42 +11,42 @@ class OptionSeeder extends Seeder
 			*/
 		public function run()
 		{
+
 				DB::table('option')->insert([
-						'option' => 'yes',
+						'option' => 'Yes',
 				]);
+
 				DB::table('option')->insert([
-						'option' => 'maybe',
+						'option' => 'Maybe',
 				]);
+
 				DB::table('option')->insert([
-						'option' => 'no',
+						'option' => 'No',
 				]);
+
 				DB::table('option')->insert([
 						'i_question_id' => '3',
-						'option' => 'strongly agree',
+						'option' => 'Strongly Agree',
 				]);
+
 				DB::table('option')->insert([
 						'i_question_id' => '3',
-						'option' => 'agree',
+						'option' => 'Agree',
 				]);
+
 				DB::table('option')->insert([
 						'i_question_id' => '3',
-						'option' => 'nutral',
+						'option' => 'Neutral',
 				]);
+
 				DB::table('option')->insert([
 						'i_question_id' => '3',
-						'option' => 'disagree',
+						'option' => 'Disagree',
 				]);
+
 				DB::table('option')->insert([
 						'i_question_id' => '3',
-						'option' => 'strongly disagree',
-				]);
-				DB::table('option')->insert([
-						'i_question_id' => '4',
-						'option' => 'yes',
-				]);
-				DB::table('option')->insert([
-						'i_question_id' => '4',
-						'option' => 'no',
+						'option' => 'Strongly Disagree',
 				]);
 
 		}

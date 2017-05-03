@@ -3,8 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\QuestionMeta;
-use App\AnswerType;
+use App\Response;
 
 class FixedQuestionController extends Controller
 {
@@ -17,7 +16,8 @@ class FixedQuestionController extends Controller
     {
       // $answers = AnswerType::all();
       // $questions = QuestionMeta::whereNull('course_id')->whereNull('term_id')->get();
-      
+
+		    return new Response(200);
 
     }
 

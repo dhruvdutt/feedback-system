@@ -11,63 +11,65 @@ class StudentSeeder extends Seeder
 			*/
 		public function run()
 		{
-				DB::table('student')->insert([
-						'student_id' => '201612001',
-						'program_id' => '12',
-						'course_id' => 'it617',
-				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612001',
 						'program_id' => '12',
-						'course_id' => 'it616',
+						'course_id' => 'IT617',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612001',
 						'program_id' => '12',
-						'course_id' => 'it618',
+						'course_id' => 'IT616',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612001',
 						'program_id' => '12',
-						'course_id' => 'it619',
+						'course_id' => 'IT618',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612001',
 						'program_id' => '12',
-						'course_id' => 'it694',
+						'course_id' => 'IT619',
+				]);
+
+				DB::table('student')->insert([
+						'student_id' => '201612001',
+						'program_id' => '12',
+						'course_id' => 'IT694',
 				]);
 				DB::table('student')->insert([
 						'student_id' => '201612002',
 						'program_id' => '12',
-						'course_id' => 'it617',
+						'course_id' => 'IT617',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612002',
 						'program_id' => '12',
-						'course_id' => 'it616',
+						'course_id' => 'IT616',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612002',
 						'program_id' => '12',
-						'course_id' => 'it618',
+						'course_id' => 'IT618',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612002',
 						'program_id' => '12',
-						'course_id' => 'it619',
+						'course_id' => 'IT619',
 				]);
 
 				DB::table('student')->insert([
 						'student_id' => '201612002',
 						'program_id' => '12',
-						'course_id' => 'it694',
+						'course_id' => 'IT694',
 				]);
+
 		}
 }
