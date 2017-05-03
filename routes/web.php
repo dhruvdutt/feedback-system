@@ -31,10 +31,10 @@ For all the routes listed below following conventions will be followed using fir
 get - /term - index
 get - /term/create - create
 post - /term - store
-get - /term/{anything} - show
-get - /term/{anything}/edit - edit
-post - /term/{anything} - update
-delete - /term/{anything} - destroy
+get - /term/{id} - show
+get - /term/{id}/edit - edit
+post - /term/{id} - update
+delete - /term/{id} - destroy
 
 */
 
