@@ -2,23 +2,46 @@ angular
   .module('app.admin.feedback')
   .controller('AddFeedbackController', controller);
 
-controller.$inject = [];
+controller.$inject = ['$scope', '$mdDialog', 'FeedbackService'];
 
-function controller() {
+function controller($scope, $mdDialog, FeedbackService, feedback) {
 
-  let vm = this;
+  var vm = this;
 
-  vm.feedback = {
-    name: 'Autumn',
-    course: 'Computer Networks',
-    programs: [
-      {
-        name: 'MSc',
-        startDate: new Date(),
-        endDate: new Date()
-      }
-    ]
-  };
+  vm.addUpdateFeedback = addUpdateFeedback;
+  vm.closeDialog = closeDialog;
 
+  _setDefaults();
+  _getPrograms();
+
+// /////////////////////////////////////
+
+  function addUpdateFeedback() {
+    FeedbackService.addUpdateFeedback(
+      angular.copy(vm.feedback), angular.copy(vm.programs)
+    ).then(function() {
+      closeDialog();
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  function closeDialog() {
+    $mdDialog.cancel();
+  }
+
+  function _getPrograms() {
+    FeedbackService.getPrograms().then(function(response) {
+      vm.programs = response;
+      $scope.$apply();
+    }).catch(function(error) {
+      console.log(error);
+    });
+  }
+
+  function _setDefaults() {
+    vm.feedback = {};
+    vm.programs = [];
+  }
 
 }

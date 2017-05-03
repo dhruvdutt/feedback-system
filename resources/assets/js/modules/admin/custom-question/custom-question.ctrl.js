@@ -1,10 +1,10 @@
 angular
-  .module('app.admin.fixedQuestion')
-  .controller('FixedQuestionController', controller);
+  .module('app.admin.customQuestion')
+  .controller('CustomQuestionController', controller);
 
-controller.$inject = ['FixedQuestionService', '$scope', '$mdDialog'];
+controller.$inject = ['CustomQuestionService', '$scope', '$mdDialog'];
 
-function controller(FixedQuestionService, $scope, $mdDialog) {
+function controller(CustomQuestionService, $scope, $mdDialog) {
 
   var vm = this;
 
@@ -12,6 +12,7 @@ function controller(FixedQuestionService, $scope, $mdDialog) {
   vm.openAddUpdateQuestionModal = openAddUpdateQuestionModal;
 
   _setDefaults();
+  _getCourses();
   _getData();
 
   $scope.$on('FIXED_QUESTION_ADD_UPDATE', function() {
@@ -40,9 +41,20 @@ function controller(FixedQuestionService, $scope, $mdDialog) {
 
   }
 
+  function _getCourses() {
+
+    var promise = CustomQuestionService.getCourses();
+
+    promise.then(function(response) {
+      vm.courses = response;
+      $scope.$apply();
+    });
+
+  }
+
   function _getData() {
 
-    var promise = FixedQuestionService.getQuestions();
+    var promise = CustomQuestionService.getQuestions();
 
     vm.promise = promise;
 
@@ -55,6 +67,8 @@ function controller(FixedQuestionService, $scope, $mdDialog) {
 
   function _setDefaults() {
     vm.question = {};
+    vm.courses = [];
+    vm.course = null;
     vm.addQuestionEnabled = false;
     vm.questions = [];
   }

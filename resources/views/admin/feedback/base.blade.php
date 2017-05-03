@@ -1,112 +1,81 @@
 @extends('admin.base')
 @section('admin-content')
-<div ng-controller="FeedbackController as vm">
-	<div class="right-align">
-		<button data-target="add-feedback-modal" class="btn">Add</button>
-	</div>
 
+<div ng-controller='FeedbackController as vm'>
+	<div layout="row" layout-align="end end">
+		<md-button class="md-raised" ng-click='vm.openAddUpdateFeedbackModal()'>Add</md-button>
+	</div>
+	<div layout="column">
+		<span class="md-headline">Currently active</span>
+		<md-card>
+			<md-card-content>
+				<md-table-container>
+					<table md-table ng-model="vm.selected" md-progress="vm.promise">
+						<thead md-head md-order="vm.query.order">
+							<tr md-row>
+								<th md-column md-numeric>#</th>
+								<th md-column>Name</th>
+								<th md-column>Start date</th>
+								<th md-column>End date</th>
+								<th md-column>Active</th>
+								<th md-column>Actions</th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr md-row ng-repeat="feedback in vm.active track by feedback.feedback_id">
+								<td md-cell><% $index + 1 %></td>
+								<td md-cell><% feedback.feedback_name %></td>
+								<td md-cell><% feedback.start_date %></td>
+								<td md-cell><% feedback.end_date %></td>
+								<td md-cell>
+									<md-switch ng-model="feedback.start" aria-label="Finished?" ng-change='vm.toggleFeedbackActive(feedback)'></md-switch>
+								</td>
+								<td md-cell>
+									<md-button class="md-icon-button" ng-click="vm.openAddUpdateFeedbackModal(feedback)">
+										<i class="material-icons">edit</i>
+									</md-button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
+			</md-card-content>
+		</md-card>
+	</div>
 	<br>
-
-	<div>
-
-		<h5>Currently active</h5>
-		<ul class="collapsible" data-collapsible="accordion" ng-repeat='feedback in vm.feedbacks'>
-			<li>
-				<div class="collapsible-header"><% feedback.name %></div>
-				<div class="collapsible-body">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Program</th>
-								<th>Start Date</th>
-								<th>End Date</th>
-								<th>Enabled</th>
+	<div layout="column">
+		<span class="md-headline">Recently active</span>
+		<md-card>
+			<md-card-content>
+				<md-table-container>
+					<table md-table ng-model="vm.selected" md-progress="vm.promise">
+						<thead md-head md-order="vm.query.order">
+							<tr md-row>
+								<th md-column md-numeric>#</th>
+								<th md-column>Name</th>
+								<th md-column>Start date</th>
+								<th md-column>End date</th>
+								<th md-column>Actions</th>
 							</tr>
 						</thead>
-						<tbody>
-							<tr ng-repeat='program in feedback.programs'>
-								<td><% program.name %></td>
-								<td><% program.startDate %></td>
-								<td><% program.endDate %></td>
-								<td>
-									<p>
-										<input id="di" type="checkbox" ng-model="program.enabled" ng-change="vm.editFeedback(feedback)">
-										<label for="di"></label>
-									</p>
+						<tbody md-body>
+							<tr md-row ng-repeat="feedback in vm.recent track by feedback.feedback_id">
+								<td md-cell><% $index + 1 %></td>
+								<td md-cell><% feedback.feedback_name %></td>
+								<td md-cell><% feedback.start_date %></td>
+								<td md-cell><% feedback.end_date %></td>
+								<td md-cell>
+									<md-button class="md-icon-button">
+										<i class="material-icons">edit</i>
+									</md-button>
 								</td>
 							</tr>
 						</tbody>
 					</table>
-				</div>
-			</li>
-		</ul>
-
-		<br>
-		<h5>Recently active</h5>
-		<ul class="collapsible" data-collapsible="accordion" ng-repeat='feedback in vm.feedbacks'>
-			<li>
-				<div class="collapsible-header"><% feedback.name %></div>
-				<div class="collapsible-body">
-					<table class="table table-striped">
-						<thead>
-							<tr>
-								<th>Program</th>
-								<th>Start Date</th>
-								<th>End Date</th>
-								<th>Actions</th>
-							</tr>
-						</thead>
-						<tbody>
-							<tr ng-repeat='program in feedback.programs'>
-								<td><% program.name %></td>
-								<td><% program.startDate %></td>
-								<td><% program.endDate %></td>
-								<td>
-									<i class="material-icons">mode_edit</i>
-								</td>
-							</tr>
-						</tbody>
-					</table>
-				</div>
-			</li>
-		</ul>
-
+				</md-table-container>
+			</md-card-content>
+		</md-card>
 	</div>
 </div>
 
-<div id="add-feedback-modal" class="modal modal-fixed-footer" ng-controller='AddFeedbackController as vm'>
-	<form action="/admin/settings/answer" method="post">
-	  <div class="modal-content">
-				<div class="row">
-					<div class="col m12">
-						<label for="name">Name</label>
-						 <input id="name" type="text" ng-model='vm.feedback.name' />
-					</div>
-				</div>
-				<div class="row">
-					<div class="col m12">
-						<label for="name">Course</label>
-						 <input id="name" type="text" ng-model='vm.feedback.course' />
-					</div>
-				</div>
-				<div class="row" ng-repeat='program in vm.feedback.programs'>
-					<div class="col m4">
-						<label for="name">Name</label>
-						<input id="name" type="text" ng-model='program.name' disabled />
-					</div>
-					<div class="col m4">
-						<label for="start_date">Start date</label>
-						 <input id="start_date" type="date" class="datepicker" ng-model='program.startDate' />
-					</div>
-					<div class="col m4">
-						<label for="end_date">End date</label>
-						<input id="end_date" type="date" class="datepicker" ng-model='program.endDate' />
-					</div>
-				</div>
-	  </div>
-	  <div class="modal-footer">
-	    <button type="submit" class="waves-effect waves-green btn-flat">Add</a>
-	  </div>
-	</form>
-</div>
 @stop

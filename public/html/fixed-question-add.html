@@ -1,0 +1,73 @@
+<md-dialog flex="30">
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="row" layout-align="center center">
+        <h4 class="text-center" ng-if='!vm.answerTypes.length'>Please wait...</h4>
+      </div>
+      <div ng-if='vm.answerTypes.length'>
+
+        <div layout="row">
+          <md-input-container flex>
+            <label>Question</label>
+            <input type="text" ng-model='vm.question.question' placeholder="What is your rating for the subject?" />
+          </md-input-container>
+        </div>
+
+        <div layout="column">
+          <h4>Answer type</h4>
+          <md-radio-group ng-model="vm.question.answer_type_id" layout="row">
+            <md-radio-button flex ng-repeat='type in vm.answerTypes track by type.answer_type_id' value="<% type.answer_type_id %>" class="md-primary">
+              <% type.answer_type %>
+            </md-radio-button>
+          </md-radio-group>
+        </div>
+
+        <br>
+        <div layout="column">
+          <h4>For</h4>
+          <div class="row">
+            <md-checkbox ng-model="vm.question.lec" aria-label="Lecture" flex>
+              Lecture
+            </md-checkbox>
+            <md-checkbox ng-model="vm.question.labs" aria-label="Lab" flex>
+              Lab
+            </md-checkbox>
+            <md-checkbox ng-model="vm.question.tut" aria-label="Tutorial" flex>
+              Tutorial
+            </md-checkbox>
+          </div>
+        </div>
+
+        <div layout="column" ng-if="vm.question.answer_type_id ==  1 && !vm.customOptionsEnabled">
+          <div layout="row">
+            <h2 class="md-title" flex="90">Default options</h2>
+            <md-button class="md-icon-button" ng-click="vm.toggleCustomOptions()">
+              <i class="material-icons">edit</i>
+            </md-button>
+          </div>
+          <md-chips ng-model="vm.defaultOptions" readonly="true">
+            <md-chip-template>
+             <span>
+               <strong><% $chip.option %></strong>
+             </span>
+           </md-chip-template>
+          </md-chips>
+        </div>
+
+        <div layout="column" ng-if="vm.question.answer_type_id ==  1 && vm.customOptionsEnabled">
+          <div layout="row">
+            <h2 class="md-title" flex="90">Add options</h2>
+            <md-button class="md-icon-button" ng-click="vm.toggleCustomOptions()">
+              <i class="material-icons">close</i>
+            </md-button>
+          </div>
+          <md-chips ng-model="vm.customOptions" md-removable="true"></md-chips>
+        </div>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row" layout-align="end">
+      <md-button ng-click="answer('not useful')">Cancel</md-button>
+      <md-button  class="md-raised" ng-click="vm.addUpdateQuestion()">Add</md-button>
+    </md-dialog-actions>
+</md-dialog>

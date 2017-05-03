@@ -17,9 +17,9 @@
     <body>
         <div id="app" ng-cloak>
           @if (session('message'))
-            <div class="alert alert-dismissible alert-danger text-center">
-                {{ session('message') }}
-            </div>
+            <md-content>
+              {{ session('message') }}
+            </md-content>
           @endif
           @yield('content')
         </div>
@@ -29,7 +29,7 @@
 		        'csrfToken' => csrf_token(),
 		    ]); ?>
 		</script>
-		<link rel="stylesheet" href="materialize.min.css">
+		<!-- <link rel="stylesheet" href="materialize.min.css"> -->
     <script src="{{mix('js/manifest.js')}}" charset="utf-8"></script>
     <script src="{{mix('js/vendor.js')}}" charset="utf-8"></script>
 		<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-materialize/0.2.2/angular-materialize.min.js"></script> -->

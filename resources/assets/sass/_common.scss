@@ -23,14 +23,14 @@ input[type=text]:disabled {
   justify-content: center;
 }
 
+.full-width-container {
+  width: 100% !important;
+}
+
 .full-width-button {
   width: 100%;
 }
 
-.container {
-  height: 100vh;
-}
-
-.btn {
-  background-color: #3f51b5 !important;
+.md-sidenav-left {
+  min-height: 100vh;
 }

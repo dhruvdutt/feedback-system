@@ -1,0 +1,26 @@
+<md-dialog>
+  <md-dialog-content>
+    <div class="md-dialog-content">
+      <div layout="row" layout-align="center center">
+        <h4 class="text-center" ng-if='!vm.programs.length'>Please wait...</h4>
+      </div>
+      <div ng-if='vm.programs.length'>
+        <div layout="row">
+          <md-input-container flex>
+            <label>Name</label>
+            <input type="text" ng-model='vm.feedback.feedback_name' placeholder="Autumn" />
+          </md-input-container>
+        </div>
+        <div layout="row" ng-repeat='program in vm.programs track by program.program_id'>
+          <h4><% program.program_name %></h4>
+          <md-datepicker ng-model="program.start_date"></md-datepicker>
+          <md-datepicker ng-model="program.end_date"></md-datepicker>
+        </div>
+      </div>
+    </div>
+  </md-dialog-content>
+  <md-dialog-actions layout="row" layout-align="end">
+      <md-button ng-click="answer('not useful')">Cancel</md-button>
+      <md-button  class="md-raised" ng-click="vm.addUpdateFeedback()">Add</md-button>
+    </md-dialog-actions>
+</md-dialog>

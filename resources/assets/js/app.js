@@ -3,12 +3,13 @@ require('./bootstrap');
 angular.module('app', [
 
   // 3rd party apps
-  'ui.bootstrap',
   'ngMaterial',
 
   // App modules
   'app.home',
-  'app.admin'
+  'app.admin',
+  'angAccordion',
+  'md.data.table'
 
 ], function($interpolateProvider) {
       $interpolateProvider.startSymbol('<%');

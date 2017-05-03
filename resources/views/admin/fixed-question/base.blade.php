@@ -1,103 +1,66 @@
 @extends('admin.base')
 @section('admin-content')
-<div ng-controller="FixedQuestionController as vm">
-	<div class="right-align">
-		<button data-target="add-fixed-question-modal" class="btn">Add</button>
-	</div>
-	<br>
-	<div>
-		<table class="table table-striped">
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>Question</th>
-					<th>Type</th>
-					<th>Lecture</th>
-					<th>Lab</th>
-					<th>Tutorial</th>
-					<th>Actions</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr ng-repeat='question in vm.questions track by question.id'>
-					<td><% question.id %></td>
-					<td><% question.question %></td>
-					<td><% question.answerType %></td>
-					<td>
-						<p>
-							<input id="lecture" type="checkbox" ng-model="question.lecture" disabled>
-							<label for="lecture"></label>
-						</p>
-					</td>
-					<td>
-						<p>
-							<input id="lab" type="checkbox" ng-model="question.lab" disabled>
-							<label for="lab"></label>
-						</p>
-					</td>
-					<td>
-						<p>
-							<input id="tutorial" type="checkbox" ng-model="question.tutorial" disabled>
-							<label for="tutorial"></label>
-						</p>
-					</td>
-					<td>
-						<i class="material-icons" data-target="add-fixed-question-modal" ng-click='vm.setQuestionModel(question)' ng-if='!question.isEditable'>mode_edit</i>
-					</td>
-				</tr>
-			</tbody>
-		</table>
-	</div>
 
-	<!-- Add/Update question modal -->
-	<div id="add-fixed-question-modal" class="modal modal-fixed-footer">
-		<form action="/admin/settings/answer" method="post">
-			<div class="modal-content">
-				<div class="row">
-					<div class="col m12">
-						<label for="question">Question</label>
-						<input id="question" type="text" name="question" placeholder="What is your rating for the subject?" ng-model='vm.question.question' />
-					</div>
-				</div>
-				<div class="row">
-					<div class="input-field col m12">
-						<select name="answer_type" ng-model='vm.question.answerType'>
-							<option disabled selected>Choose your option</option>
-							<option value="radio">Radio</option>
-							<option value="checkbox">Checkbox</option>
-							<option value="text">Text</option>
-						</select>
-						<label>Answer type</label>
-					</div>
-				</div>
-				<div class="row">
-					<div class="col m4">
-						<p>
-							<input id="lecture" type="checkbox" ng-model="vm.question.lecture" />
-							<label for="lecture">Lecture</label>
-						</p>
-					</div>
-					<div class="col m4">
-						<p>
-							<input id="lab" type="checkbox" ng-model="vm.question.lab" />
-							<label for="lab">Lab</label>
-						</p>
-					</div>
-					<div class="col m4">
-						<p>
-							<input id="tutorial" type="checkbox" ng-model="vm.question.tutorial" />
-							<label for="tutorial">Tutorial</label>
-						</p>
-					</div>
-				</div>
-			</div>
-			<div class="modal-footer">
-					<button type="submit" class="waves-effect waves-green btn-flat">
-						<span ng-if='vm.question.id'>Update</span>
-						<span ng-if='!vm.question.id'>Add</span>
-					</button>
-				</div>
-		</form>
+<div ng-controller='FixedQuestionController as vm'>
+	<div layout="row" layout-align="end end">
+		<md-button class="md-raised" ng-click='vm.openAddUpdateQuestionModal()'>Add</md-button>
+	</div>
+	<div layout="column">
+		<span class="md-headline">Fixed questions</span>
+		<md-card>
+			<md-card-content>
+				<md-table-container>
+					<table md-table ng-model="vm.selected" md-progress="vm.promise">
+						<thead md-head>
+							<tr md-row>
+								<th md-column md-numeric>#</th>
+								<th md-column>Question</th>
+								<th md-column>Answer type</th>
+								<th md-column>Lecture</th>
+								<th md-column>Lab</th>
+								<th md-column>Tutorial</th>
+							</tr>
+						</thead>
+						<tbody md-body>
+							<tr md-row ng-repeat="question in vm.questions track by question.i_question_id">
+								<td md-cell><% $index + 1 %></td>
+								<td md-cell><% question.question %></td>
+								<td md-cell><% question.answer_type %></td>
+								<td md-cell>
+									<span ng-if='question.lec'>
+										<i class="material-icons">done</i>
+									</span>
+									<span ng-if='!question.lec'>
+										<i class="material-icons">close</i>
+									</span>
+								</td>
+								<td md-cell>
+									<span ng-if='question.labs'>
+										<i class="material-icons">done</i>
+									</span>
+									<span ng-if='!question.labs'>
+										<i class="material-icons">close</i>
+									</span>
+								</td>
+								<td md-cell>
+									<span ng-if='question.tut'>
+										<i class="material-icons">done</i>
+									</span>
+									<span ng-if='!question.tut'>
+										<i class="material-icons">close</i>
+									</span>
+								</td>
+								<td md-cell>
+									<md-button class="md-icon-button" ng-click="vm.openAddUpdateFeedbackModal(feedback)">
+										<i class="material-icons">edit</i>
+									</md-button>
+								</td>
+							</tr>
+						</tbody>
+					</table>
+				</md-table-container>
+			</md-card-content>
+		</md-card>
 	</div>
 </div>
 
