@@ -14,8 +14,8 @@ class FeedbackMetaDataSeeder extends Seeder
       DB::table('feedback_meta_data')->insert([
         'feedback_name' => 'Feedback 1',
         'created_by' => 'admin123',
-        'start_flag' => true,
-        'active_flag' => false,
+        'start_flag' => '1',
+        'active_flag' => '0',
         'start_date' => '2017-4-22',
         'end_date' => '2017-4-28',
     ]);
@@ -23,8 +23,8 @@ class FeedbackMetaDataSeeder extends Seeder
       DB::table('feedback_meta_data')->insert([
         'feedback_name' => 'Feedback 2',
         'created_by' => 'admin123',
-        'start_flag' => true,
-        'active_flag' => true,
+        'start_flag' => '1',
+        'active_flag' => '1',
         'start_date' => '2017-5-1',
         'end_date' => '2017-5-5',
     ]);
@@ -32,8 +32,8 @@ class FeedbackMetaDataSeeder extends Seeder
     DB::table('feedback_meta_data')->insert([
       'feedback_name' => 'Feedback 3',
       'created_by' => 'admin123',
-      'start_flag' => true,
-      'active_flag' => true,
+      'start_flag' => '1',
+      'active_flag' => '1',
       'start_date' => '2017-5-6',
       'end_date' => '2017-5-7',
   ]);

@@ -6,31 +6,31 @@ use Illuminate\Database\Migrations\Migration;
 
 class User extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
-    public function up()
-    {
-      Schema::create('user',function(Blueprint $table){
-        $table->string('username')->index();
-        $table->string('name');
-        $table->string('role');
-        $table->string('password');
-        $table->string('email');
+		/**
+			* Run the migrations.
+			*
+			* @return void
+			*/
+		public function up()
+		{
+				Schema::create('user',function(Blueprint $table){
+						$table->string('username')->index();
+						$table->string('name');
+						$table->string('role');
+						$table->string('password');
+						$table->string('email');
 
-        $table->primary('username');
-      });
-    }
+						$table->primary('username');
+				});
+		}
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('user');
-    }
+		/**
+			* Reverse the migrations.
+			*
+			* @return void
+			*/
+		public function down()
+		{
+				Schema::dropIfExists('user');
+		}
 }
