@@ -18,6 +18,7 @@ class TermYear extends Migration
 
 						$table->integer('term_id')->index();
 						$table->string('term_name');
+						$table->string('year_id');
 						$table->string('year_name');
 
 						$table->primary('term_id');

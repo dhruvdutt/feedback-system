@@ -8,4 +8,5 @@ class Option extends Model
 {
 		public $timestamps = false;
 		protected $table = 'option';
+		protected $primaryKey = 'option_id';
 }

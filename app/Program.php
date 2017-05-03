@@ -8,4 +8,5 @@ class Program extends Model
 {
 		public $timestamps = false;
 		protected $table = 'program';
+		protected $primaryKey = 'program_id';
 }
