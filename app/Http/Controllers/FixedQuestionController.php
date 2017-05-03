@@ -14,6 +14,12 @@ class FixedQuestionController extends Controller
     public function index()
     {
       $questions = QuestionMeta::where('type', 'fixed')->get();
+
+		    foreach ($questions as $question) {
+				    $answer_type = AnswerType::where('answer_type_id', $question -> answer_type_id)->first();
+				    $question -> answer_type = $answer_type['answer_type'];
+      }
+
 		    return new Response(200, 'OK', $questions);
     }
 
@@ -35,6 +41,7 @@ class FixedQuestionController extends Controller
       $lab = $request->input('lab');
       $tutorial = $request->input('tutorial');
     		$type = "fixed";
+    		$isAvailable = "1";
 
       $question_meta = new QuestionMeta();
       $question_meta -> question = $question;
@@ -43,6 +50,7 @@ class FixedQuestionController extends Controller
       $question_meta -> lecture = $lecture;
       $question_meta -> lab = $lab;
       $question_meta -> tutorial = $tutorial;
+      $question_meta -> isAvailable = $isAvailable;
       $question_meta -> save();
 
       if ($request->has('customOptions')) {
@@ -86,5 +94,15 @@ class FixedQuestionController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function isAvailable(Request $request)
+    {
+		    $i_question_id = $request->input('i_question_id');
+		    $isAvailable = $request->input('isAvailable');
+		    $question = QuestionMeta::where('i_question_id', $i_question_id)->first();
+		    $question -> isAvailable = $isAvailable;
+		    $question -> save();
+		    return new Response(200, 'OK', $question);
     }
 }

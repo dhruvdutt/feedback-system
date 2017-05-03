@@ -19,6 +19,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -28,6 +29,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -37,6 +39,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -46,6 +49,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -55,6 +59,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -64,6 +69,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '1',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -73,6 +79,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '1',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -82,6 +89,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '1',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -91,6 +99,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '0',
 						'tutorial' => '1',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -100,6 +109,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '0',
 						'tutorial' => '1',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -109,6 +119,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -118,6 +129,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '1',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -127,6 +139,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '0',
 						'lab' => '0',
 						'tutorial' => '1',
+						'isAvailable' => '1',
 				]);
 
 				DB::table('question_meta')->insert([
@@ -136,6 +149,7 @@ class QuestionMetaSeeder extends Seeder
 						'lecture' => '1',
 						'lab' => '0',
 						'tutorial' => '0',
+						'isAvailable' => '1',
 				]);
 
 		}

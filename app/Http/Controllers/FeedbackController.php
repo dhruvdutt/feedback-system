@@ -57,8 +57,8 @@ class FeedbackController extends Controller
 		    $feedback_id = $request->get('feedback_id');
 		    $start_flag = $request->get('start_flag');
 		    $feedback = FeedbackMetaData::where('feedback_id', $feedback_id)->first();
-		    $feedback->start_flag = $start_flag;
-		    $feedback->save();
+		    $feedback -> start_flag = $start_flag;
+		    $feedback -> save();
     		return new Response(200, 'OK', $feedback);
     }
 

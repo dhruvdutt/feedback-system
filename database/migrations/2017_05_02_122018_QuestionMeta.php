@@ -21,6 +21,7 @@ class QuestionMeta extends Migration
 						$table->tinyInteger('lecture');
 						$table->tinyInteger('lab');
 						$table->tinyInteger('tutorial');
+						$table->tinyInteger('isAvailable');
 
 						$table->foreign('answer_type_id')->references('answer_type_id')->on('answer_type');
 				});
