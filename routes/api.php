@@ -14,8 +14,37 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+		return $request->user();
 });
 
-//Route::post('/', ['uses' => 'HomeController@checkToken']);
-//Route::post('/course-selection', ['uses' => 'CourseController@post']);
+/* Resource Route Guide
+		get - /term - index
+		get - /term/create - create
+		post - /term - store
+		get - /term/{anything} - show
+		get - /term/{anything}/edit - edit
+		post - /term/{anything} - update
+		delete - /term/{anything} - destroy
+*/
+
+Route::group(['prefix' => 'admin'], function () {
+
+		Route::resource('feedback','FeedbackController');
+		Route::post('feedback/start', ['uses' => 'FeedbackController@start']);
+
+		Route::post('questions/fixed/isAvailable', ['uses' => 'FixedQuestionController@isAvailable']);
+		Route::resource('questions/fixed','FixedQuestionController');
+
+		Route::get('questions/custom/courses', ['uses' => 'CustomQuestionController@courses']);
+		Route::post('questions/custom/link', ['uses' => 'CustomQuestionController@link']);
+		Route::resource('questions/custom','CustomQuestionController');
+
+		Route::resource('program-course-term','ProgramCourseTermController');
+
+		Route::resource('options','OptionsController');
+
+		// Pending
+		Route::resource('import','ImportController');
+		Route::resource('user','UserMasterController');
+
+});

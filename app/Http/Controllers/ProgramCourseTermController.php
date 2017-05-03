@@ -3,109 +3,57 @@
 namespace App\Http\Controllers;
 
 use App\ProgramCourseTerm;
-use App\ProgramMaster;
-use App\CourseMaster;
-use App\TermYearMaster;
+use App\Program;
+use App\Course;
+use App\TermYear;
 use Illuminate\Http\Request;
 use App\Response;
 
 
 class ProgramCourseTermController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-		    $list = ProgramCourseTerm::all();
-//      return response()->json($list);
+		    $dataAll = ProgramCourseTerm::get();
+		    $data = array();
+		    foreach ($dataAll as $dataOne) {
+		    		$object = new \stdClass();
+		    		$object->program = Program::where('program_id', $dataOne->program_id)->first();
+		    		$object->course = Course::where('course_id', $dataOne->course_id)->first();
+		    		$object->term = TermYear::where('term_id', $dataOne->term_id)->first();
+		    		$data[] = $object;
+		    }
 
-		    return view('admin.programCourse.base', ['list' => $list]);
-
+		    //
+		    return new Response(400, 'OK', $data);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-		      $programs = ProgramMaster::all();
-        $courses = CourseMaster::all();
-        $terms = TermYearMaster::all();
 
-		      return view('admin.programCourse.add', [
-		      		'programs' => $programs,
-		      		'courses' => $courses,
-		      		'terms' => $terms
-		      ]);
-
-//        return response()->json([
-//            'program' => $program,
-//            'course' => $course,
-//            'term' => $term
-//        ]);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
-        $programCourse = new ProgramCourseTerm;
-        $programCourse->program_id = $request->program_id;
-        $programCourse->course_id = $request->course_id;
-        $programCourse->term_id = $request->term_id;
 
-        $programCourse->save();
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\ProgramCourseTerm  $programCourseTerm
-     * @return \Illuminate\Http\Response
-     */
     public function show(ProgramCourseTerm $programCourseTerm)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\ProgramCourseTerm  $programCourseTerm
-     * @return \Illuminate\Http\Response
-     */
     public function edit(ProgramCourseTerm $programCourseTerm)
     {
         //
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ProgramCourseTerm  $programCourseTerm
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, ProgramCourseTerm $programCourseTerm)
     {
         //
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\ProgramCourseTerm  $programCourseTerm
-     * @return \Illuminate\Http\Response
-     */
     public function destroy(ProgramCourseTerm $programCourseTerm)
     {
         //

@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\ProgramMaster;
-use App\CourseMaster;
+use App\Program;
+use App\Course;
 use App\ProgramCourseTerm;
 
 class HomeController extends Controller
@@ -44,7 +44,7 @@ class HomeController extends Controller
 						// @TODO Manipulate ProgramName from $student_id
 						// @Dep Hard Coded String Dep
 						$programName = "B.Tech";
-						$program = ProgramMaster::where('program_name', $programName)->first();
+						$program = Program::where('program_name', $programName)->first();
 						return $program;
 				}
 

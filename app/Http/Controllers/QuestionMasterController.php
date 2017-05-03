@@ -2,8 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\QuestionMaster;
-use App\RadioOptionsMasterController;
+use App\QuestionMeta;
+use App\Option;
 use Illuminate\Http\Request;
 
 class QuestionMasterController extends Controller
@@ -16,7 +16,7 @@ class QuestionMasterController extends Controller
     public function index()
     {
         //
-        $data = QuestionMaster::all();
+        $data = QuestionMeta::all();
 
         return response()->json($data);
     }
@@ -40,7 +40,7 @@ class QuestionMasterController extends Controller
     public function store(Request $request)
     {
         //
-        $question = new QuestionMaster;
+        $question = new QuestionMeta;
 
         $question->course_id = $request->course_id;
         $question->term_id = $request->term_id;
@@ -54,7 +54,7 @@ class QuestionMasterController extends Controller
             if($request->options != null)
             {
                 foreach ($request->options as $option) {
-                    $radioOption = new RadioOptionsMasterController;
+                    $radioOption = new Option();
                     $radioOption->question_id = $question->question_id;
                     $radioOption->option = $option;
                     $radioOption->save();
@@ -67,13 +67,13 @@ class QuestionMasterController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\QuestionMaster  $questionMaster
+     * @param  \App\QuestionMeta  $questionMaster
      * @return \Illuminate\Http\Response
      */
-    public function show(QuestionMaster $questionMaster, $course_id)
+    public function show(QuestionMeta $questionMaster, $course_id)
     {
         /*All the questions that are fixed as well as custom questions for a particular course will be returned here*/
-        $questions = QuestionMaster::where('course_id',$course_id)->get();
+        $questions = QuestionMeta::where('course_id',$course_id)->get();
 
         return $questions;
     }
@@ -82,10 +82,10 @@ class QuestionMasterController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\QuestionMaster  $questionMaster
+     * @param  \App\QuestionMeta  $questionMaster
      * @return \Illuminate\Http\Response
      */
-    public function edit(QuestionMaster $questionMaster)
+    public function edit(QuestionMeta $questionMaster)
     {
         //
     }
@@ -94,10 +94,10 @@ class QuestionMasterController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\QuestionMaster  $questionMaster
+     * @param  \App\QuestionMeta  $questionMaster
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, QuestionMaster $questionMaster)
+    public function update(Request $request, QuestionMeta $questionMaster)
     {
         //
     }
@@ -105,10 +105,10 @@ class QuestionMasterController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\QuestionMaster  $questionMaster
+     * @param  \App\QuestionMeta  $questionMaster
      * @return \Illuminate\Http\Response
      */
-    public function destroy(QuestionMaster $questionMaster)
+    public function destroy(QuestionMeta $questionMaster)
     {
         //
     }

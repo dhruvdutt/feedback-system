@@ -4,36 +4,39 @@ use Illuminate\Database\Seeder;
 
 class FeedbackMetaDataSeeder extends Seeder
 {
-    /**
-     * Run the database seeds.
-     *
-     * @return void
-     */
-    public function run()
-    {
-      DB::table('feedback_metadata')->insert([
-          'term_id' => '1',
-          'username' => 'dineshprajapati',
-          'start_date' => '2014/04/12',
-          'end_date' => '2014/04/22',
-      ]);
-      DB::table('feedback_metadata')->insert([
-          'term_id' => '2',
-          'username' => 'dineshprajapati',
-          'start_date' => '2014/08/15',
-          'end_date' => '2014/08/23',
-      ]);
-      DB::table('feedback_metadata')->insert([
-          'term_id' => '3',
-          'username' => 'dineshprajapati',
-          'start_date' => '2014/12/13',
-          'end_date' => '2014/12/25',
-      ]);
-      DB::table('feedback_metadata')->insert([
-          'term_id' => '4',
-          'username' => 'dineshprajapati',
-          'start_date' => '2015/03/12',
-          'end_date' => '2015/03/22',
-      ]);
-    }
+		/**
+			* Run the database seeds.
+			*
+			* @return void
+			*/
+		public function run()
+		{
+				DB::table('feedback_meta_data')->insert([
+						'feedback_name' => 'Feedback 1',
+						'created_by' => 'admin',
+						'start_flag' => '1',
+						'active_flag' => '0',
+						'start_date' => '2017-04-22',
+						'end_date' => '2017-04-28',
+				]);
+
+				DB::table('feedback_meta_data')->insert([
+						'feedback_name' => 'Feedback 2',
+						'created_by' => 'admin',
+						'start_flag' => '1',
+						'active_flag' => '1',
+						'start_date' => '2017-05-01',
+						'end_date' => '2017-05-05',
+				]);
+
+				DB::table('feedback_meta_data')->insert([
+						'feedback_name' => 'Feedback 3',
+						'created_by' => 'admin',
+						'start_flag' => '1',
+						'active_flag' => '1',
+						'start_date' => '2017-05-06',
+						'end_date' => '2017-05-07',
+				]);
+
+		}
 }

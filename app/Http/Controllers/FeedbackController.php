@@ -2,70 +2,100 @@
 
 namespace App\Http\Controllers;
 
+use App\FeedbackMetaData;
+use App\FeedbackProgram;
+use App\Response;
 use Illuminate\Http\Request;
+use App\Program;
 
 class FeedbackController extends Controller
 {
-		public function index(Request $request)
-		{
-				$coreCourses = $request->session()->pull('coreCourses');
-				if ($request->session()->has('electiveCourses'))
-						$electiveCourses = $request->session()->pull('electiveCourses');
-				$fixedQuestions = $request->session()->pull('fixedQuestions');
-				$fixedQuestionsOptions = $request->session()->pull('fixedQuestionsOptions');
-				$customQuestions = $request->session()->pull('customQuestions');
+    public function index()
+    {
+      $active_feedbacks = FeedbackMetaData::where('active_flag', true)->get();
+      $recent_feedbacks = FeedbackMetaData::where('active_flag', false)->orderBy('end_date', 'desc')->get();
 
-				if (!isset($electiveCourses))
-						$electiveCourses = array();
-
-//      return response()->json([
-//						  'coreCourses' => $coreCourses[0],
-//						  'electiveCourses' => $electiveCourses[0],
-//						  'fixedQuestions' => $fixedQuestions[0],
-//						  'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-//						  'customQuestions' => $customQuestions[0]
-//				  ]);
-
-		    return view('feedback')->with([
-				    'coreCourses' => $coreCourses[0],
-				    'electiveCourses' => $electiveCourses[0],
-				    'fixedQuestions' => $fixedQuestions[0],
-				    'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-				    'customQuestions' => $customQuestions[0]
-		    ]);
-
+      return new Response(200, 'OK', [
+      		'active' => $active_feedbacks,
+      		'recent' => $recent_feedbacks,
+      ]);
     }
 
-		public function create(Request $request)
-		{
-				// key: 'courseId-questionId' => optionId
-				// $request->get('COURSEID - QUESTION ID')
-				$coreCourses = $request->session()->pull('coreCourses')[0];
-				if ($request->session()->has('electiveCourses')) {
-						$electiveCourses = $request->session()->pull('electiveCourses')[0];
-						$courses = array_merge($coreCourses, $electiveCourses);
-				} else {
-						$courses = $coreCourses;
+				public function create()
+				{
+						$data = Program::all();
+						return new Response(200, 'OK', $data);
 				}
 
-				$fixedQuestions = $request->session()->pull('fixedQuestions')[0];
-				$customQuestions = $request->session()->pull('customQuestions')[0];
+    public function store(Request $request)
+    {
+      // @TODO username from session
+      $created_by = "admin";
 
-				$fixedQuestions = (array) json_decode(json_encode($fixedQuestions), true);
-				$customQuestions = (array) json_decode(json_encode($customQuestions), true);
+      $feedback_name = $request->input('feedback_name');
+      $programs = $request->input('programs');
 
-				$question = array_merge($fixedQuestions, $customQuestions);
+      // Feedback Rates Range: Start-End
+		    $feedback_start_date = $this->getMinFeedbackDate($programs);
+		    $feedback_end_date = $this->getMaxFeedbackDate($programs);
 
-				$data = $request->get('IT612-1');
+      // Save Data to DB
+      $feedback_meta = new FeedbackMetaData();
+      $feedback_meta->feedback_name = $feedback_name;
+      $feedback_meta->created_by = $created_by;
+      $feedback_meta->active_flag = 1;
+      $feedback_meta->start_flag = 0;
+      $feedback_meta->start_date = $feedback_start_date;
+      $feedback_meta->end_date = $feedback_end_date;
+      $feedback_meta->save();
 
-				return response()->json([
-						gettype($question),
-						($question)
-				]);
-		}
+      return new Response(200);
+    }
 
-		public function thankyou()
-		{
-				return view('thankyou');
-		}
+    public function start(Request $request)
+    {
+		    $feedback_id = $request->get('feedback_id');
+		    $start_flag = $request->get('start_flag');
+		    $feedback = FeedbackMetaData::where('feedback_id', $feedback_id)->first();
+		    $feedback -> start_flag = $start_flag;
+		    $feedback -> save();
+    		return new Response(200, 'OK', $feedback);
+    }
+
+    public function show($id)
+    {
+      $feedback = FeedbackMetaData::where('feedback_id', $id)->first();
+      $programs = FeedbackProgram::where('feedback_id', $id)->get();
+
+      $data = $feedback;
+      $data -> programs = $programs;
+
+      return new Response(200, 'OK', $data);
+    }
+
+    public function update(Request $request, $id)
+    {
+        // @TODO
+    }
+
+    public function destroy($id)
+    {
+        //
+    }
+
+    private function getMinFeedbackDate($programs) {
+		    $start_dates_ts = array();
+		    foreach ($programs as $program) {
+				    array_push($start_dates_ts, strtotime($program['start_date']));
+		    }
+		    return date('Y-m-d', min($start_dates_ts));
+    }
+
+    private function getMaxFeedbackDate($programs) {
+		    $end_dates_ts = array();
+		    foreach ($programs as $program) {
+				    array_push($end_dates_ts, strtotime($program['end_date']));
+		    }
+		    return date('Y-m-d', max($end_dates_ts));
+    }
 }
