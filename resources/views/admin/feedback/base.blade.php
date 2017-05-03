@@ -75,7 +75,7 @@
 </div>
 
 <div id="add-feedback-modal" class="modal modal-fixed-footer" ng-controller='AddFeedbackController as vm'>
-	<form action="/admin/settings/answer" method="post">
+	<form action="/api/admin/feedback" method="post">
 	  <div class="modal-content">
 				<div class="row">
 					<div class="col m12">

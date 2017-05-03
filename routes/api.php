@@ -14,8 +14,20 @@ use Illuminate\Http\Request;
 */
 
 Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+		return $request->user();
 });
 
-//Route::post('/', ['uses' => 'HomeController@checkToken']);
-//Route::post('/course-selection', ['uses' => 'CourseController@post']);
+/* Resource Route Guide
+		get - /term - index
+		get - /term/create - create
+		post - /term - store
+		get - /term/{anything} - show
+		get - /term/{anything}/edit - edit
+		post - /term/{anything} - update
+		delete - /term/{anything} - destroy
+*/
+
+Route::group(['prefix' => 'admin'], function () {
+		Route::resource('feedback','FeedbackController');
+		Route::post('feedback/start', ['uses' => 'FeedbackController@start']);
+});

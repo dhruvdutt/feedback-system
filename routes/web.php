@@ -28,7 +28,6 @@ Route::get('/tokens', ['uses' => 'AdminController@generateTokens']);
 /*
 For all the routes listed below following conventions will be followed using first term as an example
 
-
 get - /term - index
 get - /term/create - create
 post - /term - store
@@ -46,7 +45,7 @@ Route::group(['prefix' => 'admin'], function() {
 	Route::get('logout', ['uses' => 'AdminController@logout']);
 });
 
-// ADMIN routes: /api/admin/settings/
+// ADMIN routes: /admin/settings/
 Route::group(['prefix' => 'admin'], function () {
 	Route::group(['prefix' => 'settings'], function () {
 			Route::get('feedback', ['uses' => 'AdminController@getFeedbackView']);
