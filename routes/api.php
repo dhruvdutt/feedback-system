@@ -38,4 +38,13 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::get('questions/custom/courses', ['uses' => 'CustomQuestionController@courses']);
 		Route::post('questions/custom/link', ['uses' => 'CustomQuestionController@link']);
 		Route::resource('questions/custom','CustomQuestionController');
+
+		Route::resource('program-course-term','ProgramCourseTermController');
+
+		Route::resource('options','OptionsController');
+
+		// Pending
+		Route::resource('import','ImportController');
+		Route::resource('user','UserMasterController');
+
 });

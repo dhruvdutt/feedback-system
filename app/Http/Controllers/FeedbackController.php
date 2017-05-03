@@ -15,10 +15,10 @@ class FeedbackController extends Controller
       $active_feedbacks = FeedbackMetaData::where('active_flag', true)->get();
       $recent_feedbacks = FeedbackMetaData::where('active_flag', false)->orderBy('end_date', 'desc')->get();
 
-      $data = (object) array();
-      $data -> active = $active_feedbacks;
-      $data -> recent= $recent_feedbacks;
-      return new Response(200, 'OK', $data);
+      return new Response(200, 'OK', [
+      		'active' => $active_feedbacks,
+      		'recent' => $recent_feedbacks,
+      ]);
     }
 
 				public function create()

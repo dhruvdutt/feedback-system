@@ -17,6 +17,7 @@ class Option extends Migration
 						$table->increments('option_id');
 						$table->integer('i_question_id')->unsigned()->nullable()->index();
 						$table->string('option');
+						$table->smallInteger('isAvailable')->default(1);
 
 						$table->foreign('i_question_id')->references('i_question_id')->on('question_meta');
 				});

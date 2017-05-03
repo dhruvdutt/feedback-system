@@ -52,14 +52,6 @@ Route::group(['prefix' => 'admin'], function () {
 			Route::get('program-course-term', ['uses' => 'AdminController@getProgramCourseTermView']);
 			Route::get('fixed-question', ['uses' => 'AdminController@getFixedQuestionsView']);
 			Route::get('custom-question', ['uses' => 'AdminController@getCustomQuestionsView']);
-
-			// Resource Routes
-		Route::resource('import','ImportController');
-//		Route::resource('feedback','FeedbackController');
-//		Route::resource('program-course-term','ProgramCourseTermController');
-//		Route::resource('fixed-question','FixedQuestionController');
-//		Route::resource('custom-question','CustomQuestionController');
-		Route::resource('user','UserMasterController');
 });
 
 	Route::get('dashboard', ['uses' => 'AdminController@dashboard']);

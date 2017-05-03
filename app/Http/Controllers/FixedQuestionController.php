@@ -27,10 +27,11 @@ class FixedQuestionController extends Controller
     {
     		$defaultOptions = Option::whereNull('i_question_id')->get();
     		$answerTypes = AnswerType::get();
-    		$data = (object) array();
-    		$data -> answerTypes = $answerTypes;
-		    $data -> defaultOptions = $defaultOptions;
-    		return new Response(200, 'OK', $data);
+
+    		return new Response(200, 'OK', [
+    				'answerTypes' => $answerTypes,
+    				'defaultOptions' => $defaultOptions,
+		    ]);
     }
 
     public function store(Request $request)

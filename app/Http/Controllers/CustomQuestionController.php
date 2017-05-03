@@ -36,10 +36,11 @@ class CustomQuestionController extends Controller
     {
 		    $defaultOptions = Option::whereNull('i_question_id')->get();
 		    $answerTypes = AnswerType::get();
-		    $data = (object) array();
-		    $data -> answerTypes = $answerTypes;
-		    $data -> defaultOptions = $defaultOptions;
-		    return new Response(200, 'OK', $data);
+
+		    return new Response(200, 'OK', [
+		    		'answerTypes' => $answerTypes,
+				    'defaultOptions' => $defaultOptions
+		    ]);
     }
 
 				// Add New Custom Question, Link to Selected Course
