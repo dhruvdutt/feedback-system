@@ -13,3 +13,4 @@ Homestead.yaml
 npm-debug.log
 .notes.txt.kate-swp
 .directory
+yarn-error.log
