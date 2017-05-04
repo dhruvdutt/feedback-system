@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\ProgramCourseTerm;
 use Illuminate\Http\Request;
-use \Firebase\JWT\JWT;
+
 
 class AdminController extends Controller
 {
@@ -33,27 +33,6 @@ class AdminController extends Controller
   public function logout()
   {
     return redirect('/admin/login');
-  }
-
-  public function generateTokens()
-  {
-		  $key = "priya123";
-		  $token = array(
-				  "StudentID" => 201612002,
-				  "ProgramID" => 1,
-				  "FeedbackID" => 1
-		  );
-
-		  $jwt = JWT::encode($token, $key);
-
-				$key="priya123";
-		  $decoded = JWT::decode($jwt, $key, array('HS256'));
-		  $decoded_array = (array) $decoded;
-
-		  return response()->json([
-    		'$jwt' => $jwt,
-    		'$decoded_array' => $decoded_array,
-    ]);
   }
 
 		public function getFeedbackView()

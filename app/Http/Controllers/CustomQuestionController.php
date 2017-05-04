@@ -133,6 +133,10 @@ class CustomQuestionController extends Controller
 		    foreach ($links as $link) {
 				    array_push($questions, QuestionMeta::where('i_question_id', $link->i_question_id)->first());
 						}
+		    foreach ($questions as $question) {
+				    $answer_type = AnswerType::where('answer_type_id', $question -> answer_type_id)->first();
+				    $question -> answer_type = $answer_type['answer_type'];
+		    }
 						return new Response(200, 'OK', $questions);
     }
 }

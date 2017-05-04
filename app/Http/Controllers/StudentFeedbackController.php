@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Program;
+use App\Response;
+use App\Student;
+use Firebase\JWT\JWT;
 use Illuminate\Http\Request;
 
 class StudentFeedbackController extends Controller
@@ -67,5 +71,28 @@ class StudentFeedbackController extends Controller
 		public function thankyou()
 		{
 				return view('thankyou');
+		}
+
+		public function handleGet($token) {
+				return new Response(200, 'OK',
+						$this->getCourses($token)
+				);
+		}
+
+		public function handlePost(Request $request) {
+				return new Response(200, 'OK',
+						$this->getCourses($request->get('token'))
+				);
+		}
+
+		private function getCourses($token) {
+				$key = "dd";
+				$decoded = JWT::decode($token, $key, array('HS256'));
+				$student = Student::where('student_id', $decoded->student_id)->first();
+				$program = Program::where('program_id', $student->program_id)->first();
+				return [
+						'student' => $student,
+						'program' => $program
+				];
 		}
 }

@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Attendance;
 use App\FeedbackMetaData;
 use App\FeedbackProgram;
 use App\Response;
+use App\Student;
 use Illuminate\Http\Request;
 use App\Program;
+use \Firebase\JWT\JWT;
 
 class FeedbackController extends Controller
 {
@@ -97,5 +100,57 @@ class FeedbackController extends Controller
 				    array_push($end_dates_ts, strtotime($program['end_date']));
 		    }
 		    return date('Y-m-d', max($end_dates_ts));
+    }
+
+    public function sendMail(Request $request) {
+    		// Token => StudentID + FeedbackID
+		    $feedback_id = $request->input('feedback_id');
+		    $studentIds = $this->getFalsyAttendanceStudentIds($feedback_id);
+						$tokens = $this->generateTokens($feedback_id, $studentIds);
+
+    		return new Response(200, 'OK', $tokens);
+    }
+
+				public function generateTokens($feedback_id, $studentIds)
+				{
+						$key = "dd";
+						$tokens = array();
+						foreach ($studentIds as $studentId) {
+								$payload = array(
+										"student_id" => $studentId,
+										"feedback_id" => $feedback_id
+								);
+								$token = JWT::encode($payload, $key);
+								array_push($tokens, $token);
+						}
+						return $tokens;
+
+//						$key="dd";
+//						$decoded = JWT::decode($token, $key, array('HS256'));
+
+				}
+
+    private function getFalsyAttendanceStudentIds($feedback_id) {
+		    $studentIds = $this->getUniqueStudentIds();
+		    foreach ($studentIds as $key => $studentId) {
+				    if (sizeof(Attendance::where('feedback_id', $feedback_id)->where('student_id', $studentId)->first()) > 0) {
+						    unset($studentIds[$key]);
+				    }
+		    }
+		    return array_values($studentIds);
+    }
+
+    private function getUniqueStudentIds() {
+		    $students = Student::all();
+		    $studentIds = array();
+		    foreach ($students as $student) {
+				    array_push($studentIds, $student -> student_id);
+		    }
+		    $studentIds = array_unique($studentIds);
+		    $temp = array();
+		    foreach ($studentIds as $key => $value) {
+				    array_push($temp, $value);
+		    }
+		    return $temp;
     }
 }
