@@ -24,6 +24,7 @@ class ImportController extends Controller
 
 		public function importTerm(Request $request)
 		{
+
 				$errors = array();
 				$data = $this->getDataFromFile($request);
 				if (sizeof($data->rows) > 0) {

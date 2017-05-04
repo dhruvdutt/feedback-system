@@ -84,6 +84,9 @@ class FixedQuestionController extends Controller
 
 								$question -> defaultOptions = $defaultOptions;
 
+				    $answer_type = AnswerType::where('answer_type_id', $question -> answer_type_id)->first();
+				    $question -> answer_type = $answer_type['answer_type'];
+
         return new Response(200, 'OK', $question);
     }
 
@@ -106,4 +109,5 @@ class FixedQuestionController extends Controller
 		    $question -> save();
 		    return new Response(200, 'OK', $question);
     }
+
 }
