@@ -1,10 +1,10 @@
 angular
   .module('app.admin.fixedQuestion')
-  .controller('AddFixedQuestionController', controller);
+  .controller('AddCustomQuestionController', controller);
 
-controller.$inject = ['$scope', '$mdDialog', 'FixedQuestionService'];
+controller.$inject = ['$scope', '$mdDialog', 'CustomQuestionService'];
 
-function controller($scope, $mdDialog, FixedQuestionService, feedback) {
+function controller($scope, $mdDialog, CustomQuestionService, feedback) {
 
   var vm = this;
 
@@ -15,6 +15,7 @@ function controller($scope, $mdDialog, FixedQuestionService, feedback) {
 
   _setDefaults();
   _getData();
+  _getCourses();
 
 // /////////////////////////////////////
 
@@ -24,8 +25,8 @@ function controller($scope, $mdDialog, FixedQuestionService, feedback) {
       vm.customOptions = [];
     }
 
-    FixedQuestionService.addUpdateQuestion(
-      angular.copy(vm.question), angular.copy(vm.customOptions)
+    CustomQuestionService.addUpdateQuestion(
+      angular.copy(vm.course), angular.copy(vm.question), angular.copy(vm.customOptions)
     ).then(function() {
       closeDialog();
     }).catch(function(error) {
@@ -48,17 +49,39 @@ function controller($scope, $mdDialog, FixedQuestionService, feedback) {
   }
 
   function _getData() {
-    FixedQuestionService.getData().then(function(response) {
+
+    vm.loading = true;
+
+    CustomQuestionService.getData().then(function(response) {
       vm.answerTypes = response.answerTypes;
-      vm.defaultOptions = response.defaultOptions
+      vm.defaultOptions = response.defaultOptions;
+      vm.loading = false;
       $scope.$apply();
     }).catch(function(error) {
       console.log(error);
+      vm.loading = false;
+    });
+  }
+
+  function _getCourses() {
+
+    vm.courseLoading = true;
+
+    CustomQuestionService.getCourses().then(function(response) {
+      vm.courses = response;
+      vm.courseLoading = false;
+      $scope.$apply();
+    }).catch(function(error) {
+      console.log(error);
+      vm.courseLoading = false;
     });
   }
 
   function _setDefaults() {
     vm.question = {};
+    vm.courses = [];
+    vm.loading = false;
+    vm.courseLoading = false;
     vm.customOptionsEnabled = false;
     vm.answerTypes = [];
     vm.defaultOptions = [];

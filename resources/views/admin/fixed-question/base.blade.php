@@ -51,7 +51,7 @@
 									</span>
 								</td>
 								<td md-cell>
-									<md-button class="md-icon-button" ng-click="vm.openAddUpdateFeedbackModal(feedback)">
+									<md-button class="md-icon-button" ng-click="vm.openAddUpdateQuestionModal(question)">
 										<i class="material-icons">edit</i>
 									</md-button>
 								</td>

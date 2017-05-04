@@ -4,7 +4,19 @@
       <div layout="row" layout-align="center center">
         <h4 class="text-center" ng-if='!vm.answerTypes.length'>Please wait...</h4>
       </div>
+
       <div ng-if='vm.answerTypes.length'>
+
+        <div layout="row">
+					<md-input-container flex>
+						<label>Select course</label>
+						<md-select ng-model='vm.course' ng-disabled='vm.courseLoading'>
+							<md-option ng-repeat="course in vm.courses" ng-value="course.course_id" ng-disabled="!vm.courses.length">
+              	<% course.course_name %>
+							</md-option>
+						</md-select>
+					</md-input-container>
+				</div>
 
         <div layout="row">
           <md-input-container flex>

@@ -10,13 +10,14 @@ function controller(CustomQuestionService, $scope, $mdDialog) {
 
   vm.setQuestionModel = setQuestionModel;
   vm.openAddUpdateQuestionModal = openAddUpdateQuestionModal;
+  vm.closeDialog = closeDialog;
+  vm.getCourseQuestions = getCourseQuestions;
 
   _setDefaults();
   _getCourses();
-  _getData();
 
-  $scope.$on('FIXED_QUESTION_ADD_UPDATE', function() {
-    _getData();
+  $scope.$on('CUSTOM_QUESTION_ADD_UPDATE', function() {
+    getCourseQuestions();
   });
 
 // ////////////////////////////////////////
@@ -28,8 +29,8 @@ function controller(CustomQuestionService, $scope, $mdDialog) {
   function openAddUpdateQuestionModal() {
 
     $mdDialog.show({
-      controller: 'AddFixedQuestionController as vm',
-      templateUrl: '/html/fixed-question-add.html',
+      controller: 'AddCustomQuestionController as vm',
+      templateUrl: '/html/custom-question-add.html',
       clickOutsideToClose:true,
       fullscreen: true
       // resolve: {
@@ -47,14 +48,20 @@ function controller(CustomQuestionService, $scope, $mdDialog) {
 
     promise.then(function(response) {
       vm.courses = response;
+      vm.course = response[0].course_id;
+      getCourseQuestions();
       $scope.$apply();
     });
 
   }
 
-  function _getData() {
+  function closeDialog() {
+    $mdDialog.cancel();
+  }
 
-    var promise = CustomQuestionService.getQuestions();
+  function getCourseQuestions() {
+
+    var promise = CustomQuestionService.getCourseQuestions(vm.course);
 
     vm.promise = promise;
 
@@ -62,7 +69,6 @@ function controller(CustomQuestionService, $scope, $mdDialog) {
       vm.questions = response;
       $scope.$apply();
     });
-
   }
 
   function _setDefaults() {

@@ -21,7 +21,7 @@
 			<md-list-item ng-href="/admin/settings/feedback">
 				<div class="md-list-item-text">Fixed question option</div>
 			</md-list-item>
-			<md-list-item ng-href="/admin/settings/feedback">
+			<md-list-item ng-href="/admin/settings/logout">
 				<div class="md-list-item-text">Logout</div>
 			</md-list-item>
 		</md-list>
