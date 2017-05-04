@@ -31,6 +31,7 @@ Route::group(['prefix' => 'admin'], function () {
 
 		Route::resource('feedback','FeedbackController');
 		Route::post('feedback/start', ['uses' => 'FeedbackController@start']);
+		Route::post('feedback/mail', ['uses' => 'FeedbackController@sendMail']);
 
 		Route::post('questions/fixed/isAvailable', ['uses' => 'FixedQuestionController@isAvailable']);
 		Route::resource('questions/fixed','FixedQuestionController');
@@ -53,4 +54,10 @@ Route::group(['prefix' => 'admin'], function () {
 		//Route::resource('import/term','ImportController');
 		Route::resource('user','UserMasterController');
 
+});
+
+Route::group(['prefix' => 'student'], function () {
+		Route::get('/{token}', ['uses' => 'StudentFeedbackController@handleGet']);
+		Route::post('/', ['uses' => 'StudentFeedbackController@handlePost']);
+		Route::post('/questions', ['uses' => 'StudentFeedbackController@getQuestions']);
 });
