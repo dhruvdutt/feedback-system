@@ -59,4 +59,5 @@ Route::group(['prefix' => 'admin'], function () {
 Route::group(['prefix' => 'student'], function () {
 		Route::get('/{token}', ['uses' => 'StudentFeedbackController@handleGet']);
 		Route::post('/', ['uses' => 'StudentFeedbackController@handlePost']);
+		Route::post('/questions', ['uses' => 'StudentFeedbackController@getQuestions']);
 });

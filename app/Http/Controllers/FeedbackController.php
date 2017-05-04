@@ -70,10 +70,9 @@ class FeedbackController extends Controller
       $feedback = FeedbackMetaData::where('feedback_id', $id)->first();
       $programs = FeedbackProgram::where('feedback_id', $id)->get();
 
-      $data = $feedback;
-      $data -> programs = $programs;
+		    $feedback -> programs = $programs;
 
-      return new Response(200, 'OK', $data);
+      return new Response(200, 'OK', $feedback);
     }
 
     public function update(Request $request, $id)

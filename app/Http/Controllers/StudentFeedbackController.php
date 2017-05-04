@@ -2,7 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\AnswerType;
+use App\Course;
+use App\Option;
 use App\Program;
+use App\QuestionLink;
+use App\QuestionMeta;
 use App\Response;
 use App\Student;
 use Firebase\JWT\JWT;
@@ -21,14 +26,6 @@ class StudentFeedbackController extends Controller
 
 				if (!isset($electiveCourses))
 						$electiveCourses = array();
-
-//      return response()->json([
-//						  'coreCourses' => $coreCourses[0],
-//						  'electiveCourses' => $electiveCourses[0],
-//						  'fixedQuestions' => $fixedQuestions[0],
-//						  'fixedQuestionsOptions' => $fixedQuestionsOptions[0],
-//						  'customQuestions' => $customQuestions[0]
-//				  ]);
 
 		    return view('feedback')->with([
 				    'coreCourses' => $coreCourses[0],
@@ -90,9 +87,81 @@ class StudentFeedbackController extends Controller
 				$decoded = JWT::decode($token, $key, array('HS256'));
 				$student = Student::where('student_id', $decoded->student_id)->first();
 				$program = Program::where('program_id', $student->program_id)->first();
+				$studentData = Student::where('student_id', $student->student_id)->where('program_id', $student->program_id)->get();
+				$courses = array();
+				foreach ($studentData as $data) {
+						array_push($courses, Course::where('course_id', $data['course_id'])->first());
+				}
 				return [
-						'student' => $student,
-						'program' => $program
+						'program' => $program,
+						'courses' => $courses
 				];
 		}
+
+		public function getQuestions(Request $request) {
+				$courses = $request->input('courses');
+				// Fixed Questions Builder
+				$questions = (object) array();
+				$fixedQuestions = (object) array();
+				$fixedQuestions -> lab = $this->getLLTQuestions('fixed', 'lab');
+				$fixedQuestions -> lecture = $this->getLLTQuestions('fixed', 'lecture');
+				$fixedQuestions -> tutorial = $this->getLLTQuestions('fixed', 'tutorial');
+				foreach ($courses as $course) {
+						$course_id = $course['course_id'];
+						$questions->$course_id = $fixedQuestions;
+				}
+
+				// Fixed Questions Builder
+				$cQuestions = (object) array();
+
+//				foreach ($courses as $course) {
+//						$course_id = $course['course_id'];
+//						$customQuestions= (object) array();
+//						$customQuestions-> lab = $this->getLLTCustomQuestions('custom', 'lab');
+//						$customQuestions-> lecture = $this->getLLTCustomQuestions('custom', 'lecture');
+//						$customQuestions-> tutorial = $this->getLLTCustomQuestions('custom', 'tutorial');
+//						$cQuestions->$course_id = $customQuestions;
+//				}
+
+				return new Response(200, 'OK', [
+						'courses' => $courses,
+						'questions' => $questions,
+						'customQuestions' => $cQuestions
+				]);
+		}
+
+		private function getAnswerType($questions) {
+				foreach ($questions as $question) {
+						$answer_type = AnswerType::where('answer_type_id', $question -> answer_type_id)->first();
+						$question -> answer_type = $answer_type['answer_type'];
+				}
+				return $questions;
+		}
+
+		private function getLLTQuestions($type, $llpType) {
+				$questions = $this->getAnswerType(QuestionMeta::where('type', $type)->where($llpType, 1)->where('isAvailable', 1)->get());
+				$questions = $this->optionsBinder($questions);
+				return $this->questionsCleaner($questions);
+		}
+
+		private function optionsBinder($questions) {
+				$defaultOptions = Option::whereNull('i_question_id')->where('isAvailable', 1)->get();
+				foreach ($questions as $question) {
+						$customOptions = Option::where('i_question_id', $question->i_question_id)->get();
+						$question -> options = sizeof($customOptions) > 0 ? $customOptions : $defaultOptions;
+				}
+				return $questions;
+		}
+
+		private function questionsCleaner($questions) {
+				foreach ($questions as $question) {
+						unset($question['type']);
+						unset($question['lecture']);
+						unset($question['lab']);
+						unset($question['tutorial']);
+//						unset($question['isAvailable']);
+				}
+				return $questions;
+		}
+
 }
