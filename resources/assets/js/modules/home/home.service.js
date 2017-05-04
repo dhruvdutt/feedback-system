@@ -2,7 +2,9 @@ angular
   .module('app.home')
   .service('HomeService', service);
 
-function service() {
+service.$inject =  ['$cookies'];
+
+function service($cookies) {
 
   return {
     postToken: postToken
@@ -12,7 +14,14 @@ function service() {
 
     return new Promise(function(resolve, reject) {
 
-      axios.post('/').then(() => {
+      var data = {
+        token: token
+      };
+
+      axios.post('student', data).then((response) => {
+        console.log(response);
+        $cookies.putObject('program', response.data.data.program);
+        $cookies.putObject('courses', response.data.data.courses);
         resolve();
       }).catch(error => {
         console.log(error);

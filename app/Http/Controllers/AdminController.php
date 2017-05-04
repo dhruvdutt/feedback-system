@@ -77,6 +77,10 @@ class AdminController extends Controller
 				return view('admin.fixed-question.base');
 		}
 
+    public function getFixedOptionsView() {
+				return view('admin.fixed-option.base');
+		}
+
 		public function getCustomQuestionsView() {
 				return view('admin.custom-question.base');
 		}

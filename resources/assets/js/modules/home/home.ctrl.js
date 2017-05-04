@@ -2,10 +2,10 @@ angular
 .module('app.home')
 .controller('HomeController', controller);
 
-controller.$inject = [];
+controller.$inject = ['HomeService'];
 
 // //////////////////////////////
-function controller() {
+function controller(HomeService) {
 
   var vm = this;
 
@@ -19,7 +19,9 @@ function controller() {
   }
 
   function postToken() {
-    HomeService.postToken(vm.token).catch(error => {
+    HomeService.postToken(vm.token).then(() =>{
+      window.location.href = '/course-selection';
+    }).catch(error => {
       console.log(error);
     });
   }

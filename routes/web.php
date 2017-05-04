@@ -51,6 +51,7 @@ Route::group(['prefix' => 'admin'], function () {
 			Route::get('feedback', ['uses' => 'AdminController@getFeedbackView']);
 			Route::get('program-course-term', ['uses' => 'AdminController@getProgramCourseTermView']);
 			Route::get('fixed-question', ['uses' => 'AdminController@getFixedQuestionsView']);
+			Route::get('fixed-option', ['uses' => 'AdminController@getFixedOptionsView']);
 			Route::get('custom-question', ['uses' => 'AdminController@getCustomQuestionsView']);
 			Route::get('import/term', ['uses' => 'AdminController@getImportTermView']);
 			Route::get('import/program-course', ['uses' => 'AdminController@getImportProgramCourseView']);
