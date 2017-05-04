@@ -126,4 +126,13 @@ class CustomQuestionController extends Controller
     {
         //
     }
+
+    public function courseWise($course_id) {
+						$links = QuestionLink::where('course_id', $course_id)->get();
+						$questions = array();
+		    foreach ($links as $link) {
+				    array_push($questions, QuestionMeta::where('i_question_id', $link->i_question_id)->first());
+						}
+						return new Response(200, 'OK', $questions);
+    }
 }
