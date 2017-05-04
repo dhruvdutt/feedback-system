@@ -4,7 +4,8 @@ angular
 
 controller.$inject = ['$scope', '$mdDialog', 'FixedQuestionService'];
 
-function controller($scope, $mdDialog, FixedQuestionService, feedback) {
+function controller($scope, $mdDialog, FixedQuestionService, question) {
+console.log(question);
 
   var vm = this;
 

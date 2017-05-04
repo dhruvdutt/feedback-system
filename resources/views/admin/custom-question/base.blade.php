@@ -13,8 +13,8 @@
 				<div layout="row">
 					<md-input-container flex>
 						<label>Select course</label>
-						<md-select ng-model='vm.course'>
-							<md-option ng-repeat="course in vm.courses" ng-value="course.course_id" ng-disabled="!vm.courses.length">
+						<md-select ng-model='vm.course' ng-change='vm.getCourseQuestions()'>
+							<md-option ng-repeat="course in vm.courses track by course.course_id" ng-value="course.course_id" ng-disabled="!vm.courses.length">
               	<% course.course_name %>
 							</md-option>
 						</md-select>
@@ -22,7 +22,7 @@
 				</div>
 
 				<md-table-container>
-					<table md-table ng-model="vm.selected" md-progress="vm.promise">
+					<table md-table ng-model="vm.selectedQuestions" md-progress="vm.promise">
 						<thead md-head>
 							<tr md-row>
 								<th md-column md-numeric>#</th>
@@ -35,7 +35,7 @@
 							</tr>
 						</thead>
 						<tbody md-body>
-							<tr md-row ng-repeat="question in vm.questions track by question.i_question_id">
+							<tr md-row ng-disabled='!vm.course' ng-repeat="question in vm.questions track by question.i_question_id">
 								<td md-cell><% $index + 1 %></td>
 								<td md-cell><% question.question %></td>
 								<td md-cell><% question.answer_type %></td>

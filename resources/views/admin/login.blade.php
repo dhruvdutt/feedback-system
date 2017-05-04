@@ -1,25 +1,25 @@
 @extends('base-layout')
 @section('content')
-<div class="container flex-center-container">
-	<div class="row">
-		<div class="col m4 offset-m4">
-			<h4 class="center-align">Sign in to continue</h4>
-			<div class="card">
-				<div class="card-content">
-					<form action="/admin/login" method="post">
-						<div class="form-group">
-							<input type="text" name="username" placeholder="User name" />
-						</div>
-						<div class="form-group">
-							<input type="password" name="password" placeholder="Password" />
-						</div>
-						<div class="form-group">
-							<button type="submit" class="btn btn-primary full-width-button">Login</button>
-						</div>
-					</form>
-				</div>
+<div class="flex-center-container" layout="column" layout-align="center center" ng-controller='LoginController as vm'>
+	<h1 classs="md-display-1">Sign in to continue</h1>
+	<md-card class="admin-login-card">
+		<md-card-content layout="column">
+			<div layout="column" layout-align="stretch center">
+				<md-input-container>
+					<label>Username</label>
+					<input type="text" ng-model="vm.user.username" />
+				</md-input-container>
 			</div>
-		</div>
-	</div>
+			<div layout="column" layout-align="stretch center">
+				<md-input-container>
+					<label>Password</label>
+					<input type="password" ng-model="vm.user.password" />
+				</md-input-container>
+			</div>
+			<div layout="column" layout-align="stretch center">
+				<md-button ng-click='vm.login()' class="md-raised md-primary">Login</md-button>
+			</div>
+		</md-card-content>
+	</md-card>
 </div>
 @stop

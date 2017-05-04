@@ -10,7 +10,9 @@ function service($rootScope) {
     getCourses: getCourses,
     getQuestions: getQuestions,
     getData: getData,
-    addUpdateQuestion: addUpdateQuestion
+    getCourseQuestions: getCourseQuestions,
+    addUpdateQuestion: addUpdateQuestion,
+    linkCourseQuestion: linkCourseQuestion
   };
 
   function getCourses() {
@@ -55,9 +57,21 @@ function service($rootScope) {
     });
   }
 
-  function addUpdateQuestion(question, customOptions) {
+  function getCourseQuestions(course_id) {
+    return new Promise(function(resolve, reject) {
+      axios.get('questions/custom/courses/' + course_id).then(function(response) {
+        resolve(response.data.data);
+      }).catch(function(error) {
+        console.log(error);
+        reject();
+      })
+    });
+  }
+
+  function addUpdateQuestion(course_id, question, customOptions) {
 
     var q = {
+      course_id: course_id,
       question: question.question,
       answer_type_id: question.answer_type_id,
       lecture: question.lec ? 1 : 0,
@@ -71,14 +85,33 @@ function service($rootScope) {
 
     return new Promise(function(resolve, reject) {
 
-      axios.post('questions/fixed', q).then(function(response) {
+      axios.post('questions/custom', q).then(function(response) {
         resolve();
-        $rootScope.$broadcast('FIXED_QUESTION_ADD_UPDATE');
+        $rootScope.$broadcast('CUSTOM_QUESTION_ADD_UPDATE');
       }).catch(function(error) {
         console.log(error);
         reject();
       });
 
     });
+  }
+
+  function linkCourseQuestion(question, course) {
+
+    var link = {
+      course_id: course,
+      i_question_id: question
+    };
+
+    return new Promise(function(resolve, reject) {
+      axios.post('questions/custom/link', link).then(function(response) {
+        console.log(response);
+        resolve();
+      }).catch(function(error) {
+        console.log(error);
+        reject();
+      })
+    });
+
   }
 }

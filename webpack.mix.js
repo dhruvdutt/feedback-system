@@ -10,6 +10,16 @@ const { mix } = require('laravel-mix');
  |
  */
 
+ mix.webpackConfig({
+  module: {
+    loaders: [{
+      test: /\.js$/,
+      loaders: ['ng-annotate'],
+      exclude: /node_modules/,
+    }]
+  }
+});
+
 mix
   .copy(['resources/views/**/*.html'], 'public/html/')
   .js('resources/assets/js/app.js', 'public/js')

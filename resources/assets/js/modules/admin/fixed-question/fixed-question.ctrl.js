@@ -10,6 +10,7 @@ function controller(FixedQuestionService, $scope, $mdDialog) {
 
   vm.setQuestionModel = setQuestionModel;
   vm.openAddUpdateQuestionModal = openAddUpdateQuestionModal;
+  vm.closeDialog = closeDialog;
 
   _setDefaults();
   _getData();
@@ -24,20 +25,24 @@ function controller(FixedQuestionService, $scope, $mdDialog) {
     vm.question = question;
   }
 
-  function openAddUpdateQuestionModal() {
+  function openAddUpdateQuestionModal(question) {
 
     $mdDialog.show({
       controller: 'AddFixedQuestionController as vm',
       templateUrl: '/html/fixed-question-add.html',
       clickOutsideToClose:true,
-      fullscreen: true
-      // resolve: {
-      //   feedback: function() {
-      //     return angular.copy(feedback);
-      //   }
-      // }
+      fullscreen: true,
+      resolve: {
+        question: function() {
+          return angular.copy(question);
+        }
+      }
     });
 
+  }
+
+  function closeDialog() {
+    $mdDialog.cancel();
   }
 
   function _getData() {
