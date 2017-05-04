@@ -44,7 +44,10 @@ Route::group(['prefix' => 'admin'], function () {
 		Route::resource('options','OptionsController');
 
 		// Pending
-		Route::resource('import','ImportController');
+		Route::post('import/term', ['uses' => 'ImportController@importTerm']);
+		Route::post('import/term/{term_id}', ['uses' => 'ImportController@importProgramCourse']);
+		Route::post('import/students', ['uses' => 'ImportController@importStudents']);
+		//Route::resource('import/term','ImportController');
 		Route::resource('user','UserMasterController');
 
 });

@@ -52,6 +52,9 @@ Route::group(['prefix' => 'admin'], function () {
 			Route::get('program-course-term', ['uses' => 'AdminController@getProgramCourseTermView']);
 			Route::get('fixed-question', ['uses' => 'AdminController@getFixedQuestionsView']);
 			Route::get('custom-question', ['uses' => 'AdminController@getCustomQuestionsView']);
+			Route::get('import/term', ['uses' => 'AdminController@getImportTermView']);
+			Route::get('import/program-course', ['uses' => 'AdminController@getImportProgramCourseView']);
+			Route::get('import/students', ['uses' => 'AdminController@getImportStudentsView']);
 });
 
 	Route::get('dashboard', ['uses' => 'AdminController@dashboard']);

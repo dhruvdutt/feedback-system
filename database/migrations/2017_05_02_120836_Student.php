@@ -16,6 +16,7 @@ class Student extends Migration
 				Schema::create('student',function(Blueprint $table){
 						$table->increments('student_program_id');
 						$table->integer('student_id')->index();
+						$table->string('student_name');
 						$table->string('program_id')->index();
 						$table->string('course_id')->index();
 

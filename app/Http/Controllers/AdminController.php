@@ -81,4 +81,19 @@ class AdminController extends Controller
 				return view('admin.custom-question.base');
 		}
 
+		public function getImportTermView()
+		{
+				return view('admin.import.base');
+		}
+
+		public function getImportProgramCourseView()
+		{
+				//return view('admin.import.base');
+		}
+
+		public function getImportStudentsView()
+		{
+				return view('admin.import.students');
+		}
+
 }

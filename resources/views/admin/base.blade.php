@@ -6,8 +6,14 @@
 			<md-list-item ng-href="/admin/settings/feedback">
 				<div class="md-list-item-text">Feedback</div>
 			</md-list-item>
-			<md-list-item ng-href="/admin/settings/feedback">
-				<div class="md-list-item-text">Import data</div>
+			<md-list-item ng-href="/admin/settings/import/term">
+				<div class="md-list-item-text">Import Terms</div>
+			</md-list-item>
+			<md-list-item ng-href="/admin/settings/import/program-course">
+				<div class="md-list-item-text">Import Program - Courses</div>
+			</md-list-item>
+			<md-list-item ng-href="/admin/settings/import/students">
+				<div class="md-list-item-text">Import Students</div>
 			</md-list-item>
 			<md-list-item ng-href="/admin/settings/feedback">
 				<div class="md-list-item-text">Program course term</div>
